@@ -8,7 +8,10 @@
       {id:'pta', label:'PTA役員', href:'pta.html'},
       {id:'board', label:'教委・学校', href:'board.html'},
       {id:'materials', label:'資料', href:'materials.html'},
+      {id:'national', label:'全国PTA資料', href:'national.html'},
+      {id:'articles', label:'論考', href:'articles.html'},
       {id:'responses', label:'回答集', href:'responses.html'},
+      {id:'support', label:'応援', href:'support.html'},
       {id:'contact', label:'連絡', href:'contact.html'}
     ],
     index: [
@@ -17,7 +20,10 @@
       {title:'PTA役員の方へ', href:'pta.html', text:'自動加入の停止、会費徴収の分離、名簿取得、規約改正、学校依存からの移行'},
       {title:'教育委員会・学校管理職へ', href:'board.html', text:'学校とPTAの公私分離、個人情報保護法、職務専念義務、施設利用、是正指導'},
       {title:'資料', href:'materials.html', text:'行政資料、文科省通知、個人情報保護委員会、社会教育法、学校教育法、働き方改革'},
+      {title:'全国PTA資料', href:'national.html', text:'全国の学校別PTA資料、自治体通知、入会案内、入会申込記録、会費徴収、学校配布文書'},
+      {title:'論考', href:'articles.html', text:'PTAの任意加入、公私分離、個人情報、会費徴収、教職員関与、学校施設利用に関する論考'},
       {title:'教育委員会回答集', href:'responses.html', text:'自治体回答、任意加入、入会意思確認、学校による会費徴収、個人情報提供'},
+      {title:'応援・寄付', href:'support.html', text:'公文書開示費用、教育委員会訪問の旅費、資料整理、Web公開、調査継続の支援'},
       {title:'連絡', href:'contact.html', text:'情報提供、相談、資料提供、取材、教育委員会回答共有'}
     ]
   };
@@ -64,7 +70,10 @@
                 <a href="pta.html">PTA役員の方へ</a>
                 <a href="board.html">教育委員会・学校管理職へ</a>
                 <a href="materials.html">資料</a>
+                <a href="national.html">全国PTA資料</a>
+                <a href="articles.html">論考</a>
                 <a href="responses.html">回答集</a>
+                <a href="support.html">応援・寄付</a>
               </nav>
             </div>
             <div>
@@ -96,7 +105,7 @@
       const q = input.value.trim().toLowerCase();
       if(!q){close();return;}
       const words = q.split(/\s+/).filter(Boolean);
-      const hits = site.index.filter(item=>words.every(w=>(item.title+' '+item.text).toLowerCase().includes(w))).slice(0,6);
+      const hits = site.index.filter(item=>words.every(w=>(item.title+' '+item.text).toLowerCase().includes(w))).slice(0,7);
       box.innerHTML = hits.length ? hits.map(item=>`<a class="search-result" href="${item.href}"><strong>${esc(item.title)}</strong><span>${esc(item.text)}</span></a>`).join('') : '<div class="search-empty">該当するページが見つかりません。</div>';
       box.classList.add('is-open');
     });
