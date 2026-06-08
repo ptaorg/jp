@@ -187,10 +187,38 @@
     });
   }
 
+  function bindHero(){
+    const slides = document.querySelectorAll('#heroSlideshow .slide');
+    const nav = document.getElementById('slideNav');
+    if(!slides.length) return;
+    const dots = [];
+    let current = 0;
+    function setSlide(next){
+      slides[current].classList.remove('is-active');
+      if(dots[current]) dots[current].classList.remove('is-active');
+      current = next;
+      slides[current].classList.add('is-active');
+      if(dots[current]) dots[current].classList.add('is-active');
+    }
+    if(nav){
+      slides.forEach((_, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'slide-dot' + (index === 0 ? ' is-active' : '');
+        button.setAttribute('aria-label', `${index + 1}枚目のスライド`);
+        button.addEventListener('click', () => setSlide(index));
+        nav.appendChild(button);
+        dots.push(button);
+      });
+    }
+    window.setInterval(() => setSlide((current + 1) % slides.length), 6500);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
     bindMenu();
     bindSearch();
+    bindHero();
   });
 })();
