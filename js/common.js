@@ -78,11 +78,9 @@
               <span class="brand-tagline">${site.tagline}</span>
             </span>
           </a>
-
           <nav class="desktop-nav" aria-label="主要ナビゲーション">
             ${linkList(primary, current, 'nav-link')}
           </nav>
-
           <div class="header-actions">
             <div class="search-wrap">
               <input class="search-input" type="search" placeholder="検索" aria-label="サイト内検索" autocomplete="off">
@@ -107,38 +105,60 @@
     if(!host) return;
 
     host.innerHTML = `
-      <footer class="site-footer" role="contentinfo">
+      <footer class="footer site-footer" role="contentinfo">
         <div class="footer-inner">
-          <div class="footer-main">
-            <div class="footer-about">
-              <div class="footer-title">PTA適正化推進委員会</div>
-              <p>PTAの任意加入、学校とPTAの公私分離、個人情報、会費徴収、教職員関与、学校施設利用について、一次資料と法令に基づき整理します。</p>
+          <div class="footer-grid">
+            <div>
+              <h3>PTA適正化推進委員会</h3>
+              <p>一次資料・法令・教育委員会回答にもとづき、PTAの任意加入、公私分離、個人情報、会費徴収を整理する資料サイトです。</p>
             </div>
-            <nav class="footer-nav" aria-label="フッターナビゲーション">
-              <div>
-                <strong>立場別</strong>
-                <a href="parents.html">保護者の方へ</a>
-                <a href="pta.html">PTA役員の方へ</a>
-                <a href="board.html">教育委員会・学校管理職へ</a>
+            <div>
+              <h4>公式発信</h4>
+              <p class="footer-sns-sub">最新資料・論考・回答はこちら</p>
+              <div class="footer-sns-cards">
+                <a class="fsns-card" href="articles.html"><span class="fsns-icon">論</span><span><span class="fsns-name">論考</span><span class="fsns-desc">研究ノート</span></span></a>
+                <a class="fsns-card" href="national.html"><span class="fsns-icon">資</span><span><span class="fsns-name">全国資料</span><span class="fsns-desc">実資料整理</span></span></a>
+                <a class="fsns-card" href="responses.html"><span class="fsns-icon">答</span><span><span class="fsns-name">回答集</span><span class="fsns-desc">教育委員会回答</span></span></a>
               </div>
-              <div>
-                <strong>資料・論考</strong>
-                <a href="materials.html">資料</a>
-                <a href="national.html">全国PTA資料</a>
-                <a href="articles.html">論考</a>
-                <a href="responses.html">回答集</a>
-              </div>
-              <div>
-                <strong>活動</strong>
-                <a href="support.html">応援・寄付</a>
-                <a href="contact.html">連絡・情報提供</a>
-              </div>
-            </nav>
+            </div>
+            <div>
+              <h4>立場別</h4>
+              <ul>
+                <li><a href="parents.html">保護者</a></li>
+                <li><a href="pta.html">PTA役員</a></li>
+                <li><a href="board.html">教育委員会・学校</a></li>
+                <li><a href="board.html">教育委員会向け指針</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>論点</h4>
+              <ul>
+                <li><a href="parents.html">入会手続</a></li>
+                <li><a href="materials.html">個人情報</a></li>
+                <li><a href="parents.html">会費徴収</a></li>
+                <li><a href="board.html">教職員関与</a></li>
+                <li><a href="board.html">施設利用</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>資料・支援</h4>
+              <ul>
+                <li><a href="support.html">応援・寄付</a></li>
+                <li><a href="responses.html">教育委員会の回答</a></li>
+                <li><a href="national.html">全国PTA資料</a></li>
+                <li><a href="articles.html">論考・調査報告</a></li>
+                <li><a href="materials.html">資料</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="footer-bottom">
-            <span>© PTA適正化推進委員会</span>
-            <span>試験版です。事実認定、資料URL、法令・通知の引用箇所は公開前に再確認してください。</span>
+          <div class="footer-support">
+            <div>
+              <strong>調査・資料公開の継続を応援してください</strong>
+              <p>いただいたご支援は、公文書開示、資料整理、Web公開、自治体・学校への働きかけに活用します。</p>
+            </div>
+            <a href="support.html">応援ページへ</a>
           </div>
+          <p class="copyright">© PTA適正化推進委員会</p>
         </div>
       </footer>`;
   }
