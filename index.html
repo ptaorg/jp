@@ -10,12 +10,24 @@
 </head>
 <body data-page="home">
   <div id="siteHeader"></div>
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="kicker">PTA Proper Operation</p>
-      <h1>PTAを、学校手続に溶け込ませない。</h1>
-      <p class="hero-lead">問題は、PTAが存在することではありません。任意団体であるPTAの入会、会費、名簿、連絡、役員選出、会計処理が、学校の手続と一体化し、保護者から選択可能性が見えなくなることです。</p>
+  <section aria-labelledby="top-hero-title" class="home-photo-hero">
+    <div aria-hidden="true" class="hero-slideshow" id="heroSlideshow">
+      <div class="slide kb1 is-active" style="background-image:url('https://ptaorg.com/assets/slides/1.jpg')"></div>
+      <div class="slide kb2" style="background-image:url('https://ptaorg.com/assets/slides/2.jpg')"></div>
+      <div class="slide kb3" style="background-image:url('https://ptaorg.com/assets/slides/3.jpg')"></div>
     </div>
+    <div aria-hidden="true" class="home-photo-hero-overlay"></div>
+    <div class="home-photo-hero-inner">
+      <div class="home-photo-hero-kicker">Research · Evidence · Legal Compliance</div>
+      <h1 class="home-photo-hero-title" id="top-hero-title">PTAを、任意加入の原則と<br><span>法令に基づく運営</span>へ。</h1>
+      <div aria-label="トップページの主要導線" class="home-photo-hero-actions">
+        <a class="primary" href="parents.html">保護者として読む</a>
+        <a class="secondary" href="board.html">学校・教育委員会向け</a>
+        <a class="secondary" href="national.html">資料を見る</a>
+      </div>
+    </div>
+    <div aria-label="トップ画像切り替え" class="slide-nav" id="slideNav"></div>
+    <div aria-hidden="true" class="slide-bottom-fade"></div>
   </section>
   <main id="main" class="page-shell">
     <article class="article">
