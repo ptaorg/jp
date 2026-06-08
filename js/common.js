@@ -30,6 +30,14 @@
     ]
   };
 
+  function loadFixedLayout(){
+    if(document.querySelector('link[href="css/fixed-layout.css"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'css/fixed-layout.css';
+    document.head.appendChild(link);
+  }
+
   function esc(value){
     return String(value).replace(/[&<>'"]/g, char => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
@@ -215,6 +223,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    loadFixedLayout();
     renderHeader();
     renderFooter();
     bindMenu();
