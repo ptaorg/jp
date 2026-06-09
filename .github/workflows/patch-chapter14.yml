@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'docs/chapter14-trigger.txt'
+      - 'docs/chapter14-run.txt'
 
 permissions:
   contents: write
