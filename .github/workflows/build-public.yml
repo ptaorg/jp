@@ -17,6 +17,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: build-public-materials
+  cancel-in-progress: true
+
 jobs:
   build-public:
     runs-on: ubuntu-latest
@@ -24,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,13 +44,22 @@ jobs:
       - name: Install Mermaid CLI
         run: npm install
 
-      - name: Install PDF engine
+      - name: Install PDF engine and Japanese fonts
         run: |
           sudo apt-get update
-          sudo apt-get install -y wkhtmltopdf
+          sudo apt-get install -y wkhtmltopdf fonts-noto-cjk
 
       - name: Build public materials
         run: python scripts/publish_public.py
+
+      - name: Show public build report
+        if: always()
+        run: |
+          if [ -f public/public-build-report.txt ]; then
+            cat public/public-build-report.txt
+          else
+            echo 'public/public-build-report.txt was not generated.'
+          fi
 
       - name: Commit generated public materials
         uses: stefanzweifel/git-auto-commit-action@v5
