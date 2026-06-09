@@ -18,6 +18,9 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `assets/site.css`  
   公開用ページのスタイルです。
 
+- `robots.txt` / `sitemap.xml`  
+  公開ページとPDFへの基本的な検索導線です。
+
 ## 公開用生成物
 
 公開用成果物は `public/` に配置します。
@@ -30,6 +33,9 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 
 - `public/img/`  
   Mermaid図から生成したSVGを配置します。
+
+- `public/link-check-report.txt`  
+  公開ページ内リンクと必須公開ファイルの確認結果を出力します。
 
 `dist/` は作業用生成物置き場です。公開に使う成果物だけを `public/` にコピーします。
 
@@ -80,8 +86,11 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `scripts/publish_public.py`  
   生成できたPDF、XLSX、SVGを `public/` に配置する公開用ビルドスクリプトです。
 
+- `scripts/check_public_links.py`  
+  `index.html` の相対リンクと、`public/` に必要な公開成果物が存在するか確認するスクリプトです。
+
 - `.github/workflows/build-public.yml`  
-  GitHub Actionsで公開用生成物を作成し、`public/` を更新するワークフローです。
+  GitHub Actionsで公開用生成物を作成し、リンク確認を行い、`public/` を更新するワークフローです。
 
 - `package.json`  
   Mermaid CLI を導入するためのNode.js設定です。
@@ -119,18 +128,29 @@ python scripts/build_pdf.py
 python scripts/publish_public.py
 ```
 
+公開リンク確認:
+
+```bash
+python scripts/check_public_links.py
+```
+
+公開URLも確認する場合:
+
+```bash
+python scripts/check_public_links.py --base-url https://ptaorg.com/jp/
+```
+
 詳細は `docs/build-instructions.md` を参照してください。
 
 ## 現段階で行っていないこと
 
-- GitHub Pages の公開設定確認はまだ行っていません。
-- GitHub Actions の実行結果確認はまだ行っていません。
+- 公開URL上でのHTTPリンク確認結果は、環境により確認が必要です。
 - 横浜市通知、仙台市回答、広島市回答は、正式URL又は本文確認が未了のため、断定引用していません。
 
 ## 今後の作業方針
 
-1. GitHub Pages の公開設定を確認する。
-2. GitHub Actions `Build public materials` を実行し、`public/` 生成物がコミットされるか確認する。
+1. `public/link-check-report.txt` の結果を確認する。
+2. 公開URL `https://ptaorg.com/jp/` で表示確認する。
 3. `sources/primary-sources.csv` の未確認資料を精査する。
 4. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
 5. 公開ページ上のPDF・XLSX・SVGリンクを確認する。
