@@ -18,6 +18,21 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `assets/site.css`  
   公開用ページのスタイルです。
 
+## 公開用生成物
+
+公開用成果物は `public/` に配置します。
+
+- `public/pdf/`  
+  PDF版のガイドライン、通知ひな形、学校別実態調査票説明を配置します。
+
+- `public/xlsx/`  
+  学校別実態調査票のExcelファイルを配置します。
+
+- `public/img/`  
+  Mermaid図から生成したSVGを配置します。
+
+`dist/` は作業用生成物置き場です。公開に使う成果物だけを `public/` にコピーします。
+
 ## 現在の主要ファイル
 
 - `docs/guideline.md`  
@@ -53,11 +68,20 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `scripts/build.py`  
   Markdown、CSV、Mermaid図を確認・変換し、対応環境ではExcel調査票も生成する最小ビルドスクリプトです。
 
+- `scripts/build_plain_xlsx.py`  
+  標準ライブラリだけで学校別実態調査票XLSXを生成する補助スクリプトです。
+
 - `scripts/render_diagrams.py`  
   Mermaid CLI が利用できる環境で、Mermaid図をSVG化する補助スクリプトです。
 
 - `scripts/build_pdf.py`  
   確認用HTMLからPDFを生成する補助スクリプトです。
+
+- `scripts/publish_public.py`  
+  生成できたPDF、XLSX、SVGを `public/` に配置する公開用ビルドスクリプトです。
+
+- `.github/workflows/build-public.yml`  
+  GitHub Actionsで公開用生成物を作成し、`public/` を更新するワークフローです。
 
 - `package.json`  
   Mermaid CLI を導入するためのNode.js設定です。
@@ -70,17 +94,17 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 python scripts/build.py
 ```
 
+標準ライブラリ版XLSX生成:
+
+```bash
+python scripts/build_plain_xlsx.py
+```
+
 Mermaid図のSVG化:
 
 ```bash
 npm install
 python scripts/render_diagrams.py
-```
-
-又は、次でも実行できます。
-
-```bash
-npm run render:diagrams
 ```
 
 PDF生成:
@@ -89,22 +113,27 @@ PDF生成:
 python scripts/build_pdf.py
 ```
 
+公開用生成物の配置:
+
+```bash
+python scripts/publish_public.py
+```
+
 詳細は `docs/build-instructions.md` を参照してください。
 
 ## 現段階で行っていないこと
 
 - GitHub Pages の公開設定確認はまだ行っていません。
-- `dist/` 生成物の自動コミットは行っていません。
+- GitHub Actions の実行結果確認はまだ行っていません。
 - 横浜市通知、仙台市回答、広島市回答は、正式URL又は本文確認が未了のため、断定引用していません。
 
 ## 今後の作業方針
 
 1. GitHub Pages の公開設定を確認する。
-2. `sources/primary-sources.csv` の未確認資料を精査する。
-3. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
-4. Mermaid図のSVG出力結果を確認する。
-5. PDF出力結果をレンダリング画像で検証する。
-6. 必要な生成物のみをこのリポジトリ内で公開する。
+2. GitHub Actions `Build public materials` を実行し、`public/` 生成物がコミットされるか確認する。
+3. `sources/primary-sources.csv` の未確認資料を精査する。
+4. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
+5. 公開ページ上のPDF・XLSX・SVGリンクを確認する。
 
 ## 編集上の注意
 
