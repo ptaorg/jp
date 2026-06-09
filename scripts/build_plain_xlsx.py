@@ -161,7 +161,7 @@ def build() -> None:
         ["回答方法", "学校回答欄は各項目の回答方式に沿って記入し、必要に応じて補足説明と添付資料名を記入する。"],
     ]
 
-    source_headers = ["id", "資料種別", "資料名", "発行主体", "発出日", "確認日", "URL", "関連論点", "掲載先", "備考"]
+    source_headers = ["id", "資料種別", "資料名", "発行主体", "発出日", "確認日", "URL", "関連論点", "引用箇所", "掲載先", "備考"]
     source_values = [source_headers]
     for row in source_rows:
         source_values.append([row.get(header, "") for header in source_headers])
@@ -174,7 +174,7 @@ def build() -> None:
         zf.writestr("xl/styles.xml", styles_xml())
         zf.writestr("xl/worksheets/sheet1.xml", sheet_xml(survey_values, [10, 14, 42, 20, 18, 24, 22, 18, 18, 20, 36, 38, 32, 18]))
         zf.writestr("xl/worksheets/sheet2.xml", sheet_xml(guide_values, [26, 70]))
-        zf.writestr("xl/worksheets/sheet3.xml", sheet_xml(source_values, [10, 16, 40, 18, 14, 14, 46, 24, 24, 42]))
+        zf.writestr("xl/worksheets/sheet3.xml", sheet_xml(source_values, [10, 16, 40, 18, 14, 14, 46, 24, 42, 24, 42]))
 
     print(f"OK xlsx: {OUTPUT.relative_to(ROOT)}")
 
