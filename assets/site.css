@@ -162,6 +162,37 @@ a {
   margin-top: 0.65em;
 }
 
+.diagram-figure {
+  margin: 30px 0;
+  padding: 18px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+}
+
+.diagram-figure figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.diagram-scroll {
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.diagram-scroll img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.diagram-scroll img.wide-diagram {
+  min-width: 980px;
+  max-width: none;
+}
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -223,5 +254,11 @@ th {
 
   h2 {
     font-size: 1.26rem;
+  }
+
+  .diagram-figure {
+    margin-left: -4px;
+    margin-right: -4px;
+    padding: 12px;
   }
 }
