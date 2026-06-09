@@ -20,7 +20,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--soft);
+  background: var(--paper);
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Sans", Meiryo, sans-serif;
   line-height: 1.9;
@@ -53,11 +53,16 @@ body {
 }
 
 main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 28px 72px;
+  background: var(--paper);
+}
+
+article {
   max-width: 980px;
   margin: 0 auto;
-  padding: 44px 28px 72px;
-  background: var(--paper);
-  min-height: 100vh;
+  padding-top: 44px;
 }
 
 .hero {
@@ -245,7 +250,11 @@ th {
 
 @media (max-width: 720px) {
   main {
-    padding: 32px 18px 56px;
+    padding: 0 18px 56px;
+  }
+
+  article {
+    padding-top: 32px;
   }
 
   .header-inner {
