@@ -23,6 +23,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 17px;
   line-height: 1.9;
   letter-spacing: 0.015em;
 }
