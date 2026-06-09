@@ -2,17 +2,15 @@
 """
 PTAと学校の分離資料を生成・検証する最小ビルドスクリプト。
 
-現段階の役割:
+役割:
 - docs/*.md を dist/*.html に変換する
 - data/*.csv / sources/*.csv のヘッダーを検証する
 - diagrams/*.mmd を dist/ にコピーする
 - artifact_tool が利用できる環境では学校別実態調査票 .xlsx を生成する
 - dist/build-report.txt を出力する
 
-現段階で行わないこと:
-- PDF生成
-- SVG生成
-- ptaorg.com / ptaorg.github.io への反映
+このスクリプト単体では PDF / SVG / public 配置までは行わない。
+公開用生成物の配置は scripts/publish_public.py が担当する。
 """
 
 from __future__ import annotations
@@ -56,7 +54,7 @@ EXPECTED_CSV_HEADERS = {
 
 DOCS = [
     (ROOT / "docs" / "guideline.md", DIST / "pta-school-separation-guideline.html", "PTAと学校の分離に関する教育委員会向けガイドライン"),
-    (ROOT / "docs" / "notice-template.md", DIST / "pta-school-separation-notice-template.html", "PTAの任意加入及び学校関与の適正化について（通知）"),
+    (ROOT / "docs" / "notice-template.md", DIST / "pta-school-separation-notice-template.html", "PTAの任意加入及び学校関与の分離について（通知）"),
     (ROOT / "docs" / "school-survey-form.md", DIST / "pta-school-separation-school-survey-form.html", "PTAと学校の関係に関する学校別実態調査票"),
 ]
 
@@ -236,7 +234,6 @@ def markdown_to_html(markdown: str, title: str) -> str:
 <body>
   <main>
     {body_html}
-    <div class=\"note\">このHTMLは作業確認用です。PDF生成・本体サイト反映はまだ行っていません。</div>
   </main>
 </body>
 </html>
@@ -357,7 +354,6 @@ def build_survey_xlsx(report: list[str]) -> None:
                 row.get("添付を求める資料", ""),
                 row.get("備考", ""),
             ])
-
         survey_end_row = len(survey_values)
         survey_sheet.get_range(f"A1:N{survey_end_row}").values = survey_values
         survey_sheet.freeze_panes.freeze_rows(1)
@@ -435,7 +431,7 @@ def main() -> int:
     report: list[str] = []
     report.append("PTA school separation materials build report")
     report.append("================================================")
-    report.append("This build does not generate PDF, SVG, or publish to ptaorg.com.")
+    report.append("This normal build prepares HTML, checks CSV files, and stages diagram sources.")
     report.append("")
 
     build_docs(report)
