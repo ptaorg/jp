@@ -242,7 +242,7 @@ th {
 .footer-inner {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 24px 28px;
+  padding: 24ppx 28px;
   font-size: 0.9rem;
 }
 
@@ -270,5 +270,38 @@ th {
   .diagram-figure {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+/* Supplementary SVG diagrams added without changing existing article structure. */
+section[aria-labelledby="s5"]::after,
+section[aria-labelledby="s11"]::after {
+  content: "";
+  display: block;
+  margin: 32px 0 36px;
+  min-height: 500px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+section[aria-labelledby="s5"]::after {
+  background-image: url("../public/img/article69-flow.svg");
+}
+
+section[aria-labelledby="s11"]::after {
+  background-image: url("../public/img/separation-actions.svg");
+}
+
+@media (max-width: 720px) {
+  section[aria-labelledby="s5"]::after,
+  section[aria-labelledby="s11"]::after {
+    min-height: 360px;
+    background-size: 760px auto;
+    background-position: left center;
+    overflow-x: auto;
   }
 }
