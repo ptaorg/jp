@@ -40,18 +40,23 @@ EXPECTED_CSV_HEADERS = {
         "備考",
     ],
     ROOT / "data" / "separation-checklist.csv": [
+        "調査番号",
         "分類",
-        "確認項目",
+        "学校への確認事項",
+        "回答方式",
+        "添付を求める資料",
         "判定",
         "問題がある場合のリスク",
         "教育委員会が取るべき措置",
-        "根拠資料",
+        "根拠資料ID",
+        "備考",
     ],
 }
 
 DOCS = [
     (ROOT / "docs" / "guideline.md", DIST / "pta-school-separation-guideline.html", "PTAと学校の分離に関する教育委員会向けガイドライン"),
     (ROOT / "docs" / "notice-template.md", DIST / "pta-school-separation-notice-template.html", "PTAの任意加入及び学校関与の適正化について（通知）"),
+    (ROOT / "docs" / "school-survey-form.md", DIST / "pta-school-separation-school-survey-form.html", "PTAと学校の関係に関する学校別実態調査票"),
 ]
 
 DIAGRAMS = [
