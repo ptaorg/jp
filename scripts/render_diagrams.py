@@ -22,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 OUTPUT_DIR = DIST / "diagrams-svg"
+PUPPETEER_CONFIG = ROOT / "mermaid-puppeteer-config.json"
 
 DIAGRAMS = [
     ROOT / "diagrams" / "chain.mmd",
@@ -60,11 +61,14 @@ def render_one(mmdc: str, src: Path, dst: Path) -> str:
         "-b",
         "transparent",
     ]
+    if PUPPETEER_CONFIG.exists():
+        cmd.extend(["-p", str(PUPPETEER_CONFIG)])
+
     result = subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True, check=False)
     if result.returncode != 0:
         details = (result.stderr or result.stdout or "unknown error").strip().splitlines()
-        message = details[-1] if details else "unknown error"
-        return f"NG svg: {src.relative_to(ROOT)} -> {message}"
+        tail = " | ".join(details[-5:]) if details else "unknown error"
+        return f"NG svg: {src.relative_to(ROOT)} -> {tail}"
 
     return f"OK svg: {src.relative_to(ROOT)} -> {dst.relative_to(ROOT)}"
 
@@ -87,6 +91,9 @@ def main() -> int:
         return 0
 
     report.append(f"mmdc: {mmdc}")
+    if PUPPETEER_CONFIG.exists():
+        report.append(f"puppeteer config: {PUPPETEER_CONFIG.relative_to(ROOT)}")
+
     for src in DIAGRAMS:
         dst = OUTPUT_DIR / f"{src.stem}.svg"
         report.append(render_one(mmdc, src, dst))
