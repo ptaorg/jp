@@ -6,11 +6,12 @@ PTAと学校の分離資料を生成・検証する最小ビルドスクリプ�
 - docs/*.md を dist/*.html に変換する
 - data/*.csv / sources/*.csv のヘッダーを検証する
 - diagrams/*.mmd を dist/ にコピーする
+- artifact_tool が利用できる環境では学校別実態調査票 .xlsx を生成する
 - dist/build-report.txt を出力する
 
 現段階で行わないこと:
 - PDF生成
-- Excel生成
+- SVG生成
 - ptaorg.com / ptaorg.github.io への反映
 """
 
@@ -222,6 +223,7 @@ def markdown_to_html(markdown: str, title: str) -> str:
 
     flush_paragraph()
     close_lists()
+    body_html = "\n    ".join(body)
 
     return f"""<!doctype html>
 <html lang=\"ja\">
@@ -233,12 +235,17 @@ def markdown_to_html(markdown: str, title: str) -> str:
 </head>
 <body>
   <main>
-    {'\n    '.join(body)}
+    {body_html}
     <div class=\"note\">このHTMLは作業確認用です。PDF生成・本体サイト反映はまだ行っていません。</div>
   </main>
 </body>
 </html>
 """
+
+
+def read_csv_dicts(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
 
 
 def validate_csv(path: Path, expected_header: list[str]) -> CsvCheckResult:
@@ -293,17 +300,148 @@ def copy_diagrams(report: list[str]) -> None:
         report.append(f"OK diagram: {src.relative_to(ROOT)} -> {dst.relative_to(ROOT)}")
 
 
+def build_survey_xlsx(report: list[str]) -> None:
+    """artifact_tool が利用できる環境だけで、学校別実態調査票 XLSX を生成する。"""
+    try:
+        from artifact_tool import SpreadsheetFile, Workbook
+    except ImportError:
+        report.append("SKIP xlsx: artifact_tool is not installed in this environment")
+        return
+
+    survey_path = ROOT / "data" / "separation-checklist.csv"
+    sources_path = ROOT / "sources" / "primary-sources.csv"
+    if not survey_path.exists() or not sources_path.exists():
+        report.append("NG xlsx: required CSV files not found")
+        return
+
+    try:
+        survey_rows = read_csv_dicts(survey_path)
+        source_rows = read_csv_dicts(sources_path)
+
+        wb = Workbook.create()
+        survey_sheet = wb.worksheets.add("調査票")
+        guide_sheet = wb.worksheets.add("回答区分")
+        sources_sheet = wb.worksheets.add("根拠資料")
+
+        survey_headers = [
+            "調査番号",
+            "分類",
+            "学校への確認事項",
+            "回答方式",
+            "学校回答",
+            "補足説明",
+            "添付資料名",
+            "教育委員会判定",
+            "対応状況",
+            "根拠資料ID",
+            "問題がある場合のリスク",
+            "教育委員会が取るべき措置",
+            "添付を求める資料",
+            "備考",
+        ]
+        survey_values = [survey_headers]
+        for row in survey_rows:
+            survey_values.append([
+                row.get("調査番号", ""),
+                row.get("分類", ""),
+                row.get("学校への確認事項", ""),
+                row.get("回答方式", ""),
+                "",
+                "",
+                "",
+                "",
+                "",
+                row.get("根拠資料ID", ""),
+                row.get("問題がある場合のリスク", ""),
+                row.get("教育委員会が取るべき措置", ""),
+                row.get("添付を求める資料", ""),
+                row.get("備考", ""),
+            ])
+
+        survey_end_row = len(survey_values)
+        survey_sheet.get_range(f"A1:N{survey_end_row}").values = survey_values
+        survey_sheet.freeze_panes.freeze_rows(1)
+        survey_sheet.get_range("A1:N1").format = {
+            "fill": "#0B3A67",
+            "font": {"bold": True, "color": "#FFFFFF"},
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+        }
+        survey_sheet.get_range(f"A2:N{survey_end_row}").format.wrap_text = True
+        survey_sheet.get_range("A:A").format.column_width = 10
+        survey_sheet.get_range("B:B").format.column_width = 14
+        survey_sheet.get_range("C:C").format.column_width = 42
+        survey_sheet.get_range("D:D").format.column_width = 20
+        survey_sheet.get_range("E:E").format.column_width = 18
+        survey_sheet.get_range("F:G").format.column_width = 22
+        survey_sheet.get_range("H:I").format.column_width = 18
+        survey_sheet.get_range("J:J").format.column_width = 20
+        survey_sheet.get_range("K:M").format.column_width = 34
+        survey_sheet.get_range("N:N").format.column_width = 20
+        survey_sheet.tables.add(f"A1:N{survey_end_row}", True, "SchoolSurveyTable")
+
+        survey_sheet.get_range(f"H2:H{survey_end_row}").data_validation = {
+            "rule": {"type": "list", "values": ["要是正", "要精査", "要確認", "概ね適正", "該当なし"]}
+        }
+        survey_sheet.get_range(f"I2:I{survey_end_row}").data_validation = {
+            "rule": {"type": "list", "values": ["未着手", "確認中", "学校へ差戻し", "PTA協議中", "是正済み", "対象外"]}
+        }
+
+        guide_values = [
+            ["区分", "選択肢"],
+            ["教育委員会判定", "要是正／要精査／要確認／概ね適正／該当なし"],
+            ["対応状況", "未着手／確認中／学校へ差戻し／PTA協議中／是正済み／対象外"],
+            ["注意", "学校回答欄は各項目の回答方式に沿って記入する。必要に応じて補足説明と添付資料名を記入する。"],
+        ]
+        guide_sheet.get_range("A1:B4").values = guide_values
+        guide_sheet.get_range("A1:B1").format = {
+            "fill": "#0B3A67",
+            "font": {"bold": True, "color": "#FFFFFF"},
+            "horizontal_alignment": "center",
+        }
+        guide_sheet.get_range("A:B").format.column_width = 38
+        guide_sheet.get_range("A1:B4").format.wrap_text = True
+
+        source_headers = ["id", "資料種別", "資料名", "発行主体", "発出日", "確認日", "URL", "関連論点", "掲載先", "備考"]
+        source_values = [source_headers]
+        for row in source_rows:
+            source_values.append([row.get(header, "") for header in source_headers])
+        sources_end_row = len(source_values)
+        sources_sheet.get_range(f"A1:J{sources_end_row}").values = source_values
+        sources_sheet.freeze_panes.freeze_rows(1)
+        sources_sheet.get_range("A1:J1").format = {
+            "fill": "#0B3A67",
+            "font": {"bold": True, "color": "#FFFFFF"},
+            "horizontal_alignment": "center",
+        }
+        sources_sheet.get_range(f"A2:J{sources_end_row}").format.wrap_text = True
+        sources_sheet.get_range("A:A").format.column_width = 12
+        sources_sheet.get_range("B:B").format.column_width = 16
+        sources_sheet.get_range("C:C").format.column_width = 36
+        sources_sheet.get_range("D:F").format.column_width = 16
+        sources_sheet.get_range("G:G").format.column_width = 42
+        sources_sheet.get_range("H:J").format.column_width = 28
+        sources_sheet.tables.add(f"A1:J{sources_end_row}", True, "SourcesTable")
+
+        output_path = DIST / "pta-school-separation-school-survey.xlsx"
+        SpreadsheetFile.export_xlsx(wb).save(str(output_path))
+        report.append(f"OK xlsx: {output_path.relative_to(ROOT)}")
+    except Exception as exc:  # noqa: BLE001 - build report should capture generation failures
+        report.append(f"NG xlsx: {type(exc).__name__}: {exc}")
+
+
 def main() -> int:
     DIST.mkdir(parents=True, exist_ok=True)
     report: list[str] = []
     report.append("PTA school separation materials build report")
     report.append("================================================")
-    report.append("This build does not generate PDF, Excel, or publish to ptaorg.com.")
+    report.append("This build does not generate PDF, SVG, or publish to ptaorg.com.")
     report.append("")
 
     build_docs(report)
     build_csv_checks(report)
     copy_diagrams(report)
+    build_survey_xlsx(report)
 
     report_text = "\n".join(report) + "\n"
     (DIST / "build-report.txt").write_text(report_text, encoding="utf-8")
