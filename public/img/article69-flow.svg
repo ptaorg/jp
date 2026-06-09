@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 620" width="1280" height="620" role="img" aria-labelledby="title desc">
+  <title id="title">個人情報保護法第69条で確認すべき処理フロー</title>
+  <desc id="desc">PTAと学校の分離原則を説明する行政資料向け図表</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#0b3a67"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect x="34" y="28" width="1212" height="564" rx="18" fill="#f6f8fb" stroke="#cfd8e6" stroke-width="2"/>
+  <rect x="34" y="28" width="1212" height="70" rx="18" fill="#0b3a67"/>
+  <text x="64" y="73" font-size="28" font-weight="700" fill="#ffffff" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="64" dy="0">個人情報保護法第69条で確認すべき処理フロー</tspan></text>
+  <text x="64" y="128" font-size="20" font-weight="500" fill="#5f6b7a" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="64" dy="0">学校保有情報をPTA目的で使う前に、目的外利用・目的外提供として点検する</tspan></text>
+  <rect x="66" y="178" width="250" height="118" rx="16" fill="#e9f1f8" stroke="#0b3a67" stroke-width="3"/>
+  <text x="91" y="218" font-size="21" font-weight="700" fill="#0b3a67" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="91" dy="0">学校が保有する</tspan><tspan x="91" dy="30">児童・保護者情報</tspan></text>
+  <text x="91" y="270" font-size="15" font-weight="500" fill="#5f6b7a" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="91" dy="0">取得目的は学校教育上の管理・連絡</tspan></text>
+  <line x1="318" y1="237" x2="396" y2="237" stroke="#0b3a67" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="400" y="174" width="300" height="126" rx="16" fill="#fff7df" stroke="#d4a72c" stroke-width="3"/>
+  <text x="426" y="214" font-size="22" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="426" dy="0">PTA目的に使うか</tspan></text>
+  <text x="426" y="250" font-size="17" font-weight="600" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="426" dy="0">入会管理／会費徴収／役員選出</tspan><tspan x="426" dy="25">非会員把握／協力金依頼</tspan></text>
+  <line x1="702" y1="237" x2="780" y2="237" stroke="#0b3a67" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="784" y="174" width="430" height="126" rx="16" fill="#fff1f1" stroke="#b34b4b" stroke-width="3"/>
+  <text x="810" y="214" font-size="22" font-weight="700" fill="#b34b4b" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="810" dy="0">原則：利用目的外の利用・提供</tspan></text>
+  <text x="810" y="252" font-size="17" font-weight="600" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="810" dy="0">学校の所掌事務ではなく、PTAの本来事務</tspan><tspan x="810" dy="25">形式が委託・学校送信でも目的はPTA側に残る</tspan></text>
+  <rect x="66" y="350" width="270" height="132" rx="14" fill="#ffffff" stroke="#cfd8e6" stroke-width="2"/>
+  <rect x="66" y="350" width="270" height="42" rx="14" fill="#e9f1f8"/>
+  <text x="84" y="378" font-size="17" font-weight="700" fill="#0b3a67" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="84" dy="0">69条2項1号</tspan></text>
+  <text x="84" y="420" font-size="20" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="84" dy="0">本人同意</tspan></text>
+  <text x="84" y="452" font-size="14" font-weight="500" fill="#5f6b7a" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="84" dy="0">自由・個別・明確な同意が必要</tspan><tspan x="84" dy="21">一括同意・黙示同意では不足</tspan></text>
+  <rect x="356" y="350" width="270" height="132" rx="14" fill="#ffffff" stroke="#cfd8e6" stroke-width="2"/>
+  <rect x="356" y="350" width="270" height="42" rx="14" fill="#e9f1f8"/>
+  <text x="374" y="378" font-size="17" font-weight="700" fill="#0b3a67" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="374" dy="0">69条2項2号</tspan></text>
+  <text x="374" y="420" font-size="20" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="374" dy="0">内部利用</tspan></text>
+  <text x="374" y="452" font-size="14" font-weight="500" fill="#5f6b7a" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="374" dy="0">学校の所掌事務に必要な限度か</tspan><tspan x="374" dy="21">PTA通常事務なら残る問題</tspan></text>
+  <rect x="646" y="350" width="270" height="132" rx="14" fill="#ffffff" stroke="#cfd8e6" stroke-width="2"/>
+  <rect x="646" y="350" width="270" height="42" rx="14" fill="#e9f1f8"/>
+  <text x="664" y="378" font-size="17" font-weight="700" fill="#0b3a67" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="664" dy="0">69条2項3号</tspan></text>
+  <text x="664" y="420" font-size="20" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="664" dy="0">他行政機関等</tspan></text>
+  <text x="664" y="452" font-size="14" font-weight="500" fill="#5f6b7a" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="664" dy="0">PTAは行政機関等ではない</tspan><tspan x="664" dy="21">この号では処理できない</tspan></text>
+  <rect x="936" y="350" width="270" height="132" rx="14" fill="#ffffff" stroke="#cfd8e6" stroke-width="2"/>
+  <rect x="936" y="350" width="270" height="42" rx="14" fill="#e9f1f8"/>
+  <text x="954" y="378" font-size="17" font-weight="700" fill="#0b3a67" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="954" dy="0">69条2項4号</tspan></text>
+  <text x="954" y="420" font-size="20" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="954" dy="0">特別の理由</tspan></text>
+  <text x="954" y="452" font-size="14" font-weight="500" fill="#5f6b7a" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="954" dy="0">反復される通常事務では困難</tspan><tspan x="954" dy="21">便利・慣行は特別の理由ではない</tspan></text>
+  <rect x="188" y="526" width="904" height="54" rx="12" fill="#ffffff" stroke="#0b3a67" stroke-width="2"/>
+  <text x="640" y="561" font-size="21" font-weight="700" fill="#0b3a67" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Sans',Meiryo,sans-serif"><tspan x="640" dy="0">結論：学校情報でPTA事務を補わず、PTAが会員から直接取得・管理する仕組みに分離する</tspan></text>
+</svg>
