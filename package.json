@@ -1,0 +1,12 @@
+{
+  "name": "pta-school-separation-materials",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PTAと学校の分離資料を生成するための補助ツール設定",
+  "scripts": {
+    "render:diagrams": "python scripts/render_diagrams.py"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.4.2"
+  }
+}
