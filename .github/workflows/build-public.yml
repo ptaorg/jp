@@ -12,6 +12,7 @@ on:
       - 'diagrams/**'
       - 'scripts/**'
       - 'package.json'
+      - 'mermaid-puppeteer-config.json'
       - '.github/workflows/build-public.yml'
 
 permissions:
@@ -52,6 +53,9 @@ jobs:
       - name: Build public materials
         run: python scripts/publish_public.py
 
+      - name: Check local public links
+        run: python scripts/check_public_links.py
+
       - name: Show public build report
         if: always()
         run: |
@@ -59,6 +63,15 @@ jobs:
             cat public/public-build-report.txt
           else
             echo 'public/public-build-report.txt was not generated.'
+          fi
+
+      - name: Show link check report
+        if: always()
+        run: |
+          if [ -f public/link-check-report.txt ]; then
+            cat public/link-check-report.txt
+          else
+            echo 'public/link-check-report.txt was not generated.'
           fi
 
       - name: Commit generated public materials
