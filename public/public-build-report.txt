@@ -3,7 +3,7 @@ PTA school separation public build report
 OK step: normal build
 PTA school separation materials build report
 ================================================
-This build does not generate PDF, SVG, or publish to ptaorg.com.
+This normal build prepares HTML, checks CSV files, and stages diagram sources.
 
 OK docs: docs/guideline.md -> dist/pta-school-separation-guideline.html
 OK docs: docs/notice-template.md -> dist/pta-school-separation-notice-template.html
@@ -21,11 +21,11 @@ PTA school separation PDF build report
 ======================================
 PDF engine: wkhtmltopdf (/usr/bin/wkhtmltopdf)
 OK pdf: dist/pta-school-separation-guideline.html -> dist/pdf/pta-school-separation-guideline.pdf
-INFO pdf: pta-school-separation-guideline.pdf size=182KB
+INFO pdf: pta-school-separation-guideline.pdf size=181KB
 OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-separation-notice-template.pdf
-INFO pdf: pta-school-separation-notice-template.pdf size=141KB
+INFO pdf: pta-school-separation-notice-template.pdf size=140KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
-INFO pdf: pta-school-separation-school-survey-form.pdf size=125KB
+INFO pdf: pta-school-separation-school-survey-form.pdf size=124KB
 OK step: svg render
 PTA school separation Mermaid render report
 ================================================
