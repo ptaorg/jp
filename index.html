@@ -74,36 +74,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>入会</td>
-                <td>全会員分の入会申込記録があるか。</td>
-                <td>記録が確認できない保護者を会員扱いしない。</td>
-              </tr>
-              <tr>
-                <td>会費</td>
-                <td>学校徴収金とPTA会費が混在していないか。</td>
-                <td>PTA会費をPTA名義の独自徴収へ分離する。</td>
-              </tr>
-              <tr>
-                <td>個人情報</td>
-                <td>学校名簿をPTA事務に利用していないか。</td>
-                <td>学校保有個人情報とPTA会員情報を分離する。</td>
-              </tr>
-              <tr>
-                <td>学校連絡ツール</td>
-                <td>PTA内部事務の連絡に使っていないか。</td>
-                <td>PTA独自の連絡手段へ切り替える。</td>
-              </tr>
-              <tr>
-                <td>教職員関与</td>
-                <td>PTA本来事務を教職員が担っていないか。</td>
-                <td>学校関与を連絡調整の範囲に限定する。</td>
-              </tr>
-              <tr>
-                <td>学校施設</td>
-                <td>施設利用を目的外使用として確認しているか。</td>
-                <td>任意加入、個人情報、会費徴収の適正性を条件確認する。</td>
-              </tr>
+              <tr><td>入会</td><td>全会員分の入会申込記録があるか。</td><td>記録が確認できない保護者を会員扱いしない。</td></tr>
+              <tr><td>会費</td><td>学校徴収金とPTA会費が混在していないか。</td><td>PTA会費をPTA名義の独自徴収へ分離する。</td></tr>
+              <tr><td>個人情報</td><td>学校名簿をPTA事務に利用していないか。</td><td>学校保有個人情報とPTA会員情報を分離する。</td></tr>
+              <tr><td>学校連絡ツール</td><td>PTA内部事務の連絡に使っていないか。</td><td>PTA独自の連絡手段へ切り替える。</td></tr>
+              <tr><td>教職員関与</td><td>PTA本来事務を教職員が担っていないか。</td><td>学校関与を連絡調整の範囲に限定する。</td></tr>
+              <tr><td>学校施設</td><td>施設利用を目的外使用として確認しているか。</td><td>任意加入、個人情報、会費徴収の適正性を条件確認する。</td></tr>
             </tbody>
           </table>
         </div>
@@ -111,7 +87,7 @@
 
       <section aria-labelledby="s6">
         <h2 id="s6">6　作成中の資料</h2>
-        <p>このリポジトリでは、教育委員会・学校管理職が内部共有しやすいよう、次の資料を作成しています。</p>
+        <p>このリポジトリでは、教育委員会・学校管理職が内部共有しやすいよう、次の資料を作成しています。元データはこのリポジトリ内で管理し、必要に応じてPDF、Excel、SVGへ生成します。</p>
         <ul>
           <li>教育委員会向けガイドライン本文</li>
           <li>教育委員会通知ひな形</li>
@@ -121,18 +97,38 @@
           <li>現在の混在運用と分離後の比較図</li>
           <li>学校が関与できる範囲・関与すべきでない範囲の整理図</li>
         </ul>
-        <p>元データはこのリポジトリ内で管理し、必要に応じてPDF、Excel、SVGへ生成します。</p>
       </section>
 
       <section aria-labelledby="s7">
-        <h2 id="s7">7　大元サイトとの関係</h2>
+        <h2 id="s7">7　公開用生成物</h2>
+        <p>次のファイルは、`scripts/publish_public.py` 又はGitHub Actionsで生成し、`public/` に配置する公開用成果物です。生成前はリンク先が存在しない場合があります。</p>
+        <h3>PDF</h3>
+        <ul>
+          <li><a href="public/pdf/pta-school-separation-guideline.pdf">教育委員会向けガイドライン PDF</a></li>
+          <li><a href="public/pdf/pta-school-separation-notice-template.pdf">教育委員会通知ひな形 PDF</a></li>
+          <li><a href="public/pdf/pta-school-separation-school-survey-form.pdf">学校別実態調査票説明 PDF</a></li>
+        </ul>
+        <h3>Excel</h3>
+        <ul>
+          <li><a href="public/xlsx/pta-school-separation-school-survey.xlsx">学校別実態調査票 XLSX</a></li>
+        </ul>
+        <h3>図表</h3>
+        <ul>
+          <li><a href="public/img/chain.svg">違法・不適切運用の連鎖図 SVG</a></li>
+          <li><a href="public/img/before-after.svg">現在の混在運用と分離後の比較図 SVG</a></li>
+          <li><a href="public/img/scope.svg">学校が関与できる範囲 SVG</a></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="s8">
+        <h2 id="s8">8　大元サイトとの関係</h2>
         <p>このページは、PTAと学校の分離資料を制作・公開するための独立ページです。PTA適正化推進委員会全体の活動、資料、論考、教育委員会回答等については、次の大元サイトに整理します。</p>
         <p><a href="https://ptaorg.com/">PTA適正化推進委員会 公式サイト</a></p>
         <p>ただし、本ページの資料群は `ptaorg/jp` 内で完結して管理します。大元サイトへのリンクは補助導線であり、本文の根拠や資料管理の代替ではありません。</p>
       </section>
 
-      <section class="source-box" aria-labelledby="s8">
-        <h2 id="s8">8　現在の作業ファイル</h2>
+      <section class="source-box" aria-labelledby="s9">
+        <h2 id="s9">9　作業元ファイル</h2>
         <h3>本文・通知・調査票</h3>
         <ul>
           <li><a href="docs/guideline.md">教育委員会向けガイドライン Markdown</a></li>
