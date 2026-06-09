@@ -108,7 +108,27 @@ python scripts/publish_public.py
 
 GitHub Actions の `Build public materials` も同じ処理を実行します。
 
-## 6. 注意
+## 6. 公開リンク確認
+
+`index.html` の相対リンクと、`public/` に必要な公開成果物が存在するかを確認します。
+
+```bash
+python scripts/check_public_links.py
+```
+
+公開URLまで確認する場合は、次のように実行します。
+
+```bash
+python scripts/check_public_links.py --base-url https://ptaorg.com/jp/
+```
+
+出力:
+
+- `public/link-check-report.txt`
+
+GitHub Actions の `Build public materials` では、ローカル存在確認を自動実行します。
+
+## 7. 注意
 
 現段階では、次のことを行いません。
 
@@ -117,13 +137,13 @@ GitHub Actions の `Build public materials` も同じ処理を実行します。
 
 `dist/` は生成物置き場であり、`.gitignore` により通常はGit管理しません。公開に必要な成果物だけを `public/` に配置します。
 
-## 7. Excel生成について
+## 8. Excel生成について
 
 学校別実態調査票のExcel生成には、通常は `scripts/build_plain_xlsx.py` を使います。これは標準ライブラリだけで動作するため、GitHub Actionsでも扱いやすい方式です。
 
 ChatGPT実行環境では `artifact_tool` 版のExcel生成も使えますが、公開用生成では標準ライブラリ版を優先します。
 
-## 8. CSV検証
+## 9. CSV検証
 
 `build.py` は、次のCSVのヘッダーを検証します。
 
@@ -132,12 +152,12 @@ ChatGPT実行環境では `artifact_tool` 版のExcel生成も使えますが、
 
 ヘッダーが想定と異なる場合、`build-report.txt` に `NG csv` と表示されます。
 
-## 9. 今後追加する予定の処理
+## 10. 今後追加する予定の処理
 
 今後、必要に応じて次の処理を追加します。
 
 1. PDFレンダリング検証
 2. PDF用CSSの調整
-3. 公開ページ上のリンク確認
+3. 公開URL上のリンク確認結果の精査
 
 ただし、大元サイトへの反映は行わず、まずは `ptaorg/jp` 内で完結させます。
