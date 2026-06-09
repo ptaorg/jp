@@ -21,11 +21,11 @@ PTA school separation PDF build report
 ======================================
 PDF engine: wkhtmltopdf (/usr/bin/wkhtmltopdf)
 OK pdf: dist/pta-school-separation-guideline.html -> dist/pdf/pta-school-separation-guideline.pdf
-INFO pdf: pta-school-separation-guideline.pdf size=181KB
+INFO pdf: pta-school-separation-guideline.pdf size=182KB
 OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-separation-notice-template.pdf
-INFO pdf: pta-school-separation-notice-template.pdf size=141KB
+INFO pdf: pta-school-separation-notice-template.pdf size=142KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
-INFO pdf: pta-school-separation-school-survey-form.pdf size=124KB
+INFO pdf: pta-school-separation-school-survey-form.pdf size=125KB
 OK step: svg render
 PTA school separation SVG render report
 ======================================
