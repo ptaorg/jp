@@ -65,6 +65,10 @@ DIAGRAMS = [
 ]
 
 CSS = """
+@page {
+  size: A4;
+  margin: 18mm 16mm 20mm 16mm;
+}
 :root {
   color-scheme: light;
   --ink: #172033;
@@ -75,57 +79,96 @@ CSS = """
   --soft: #f6f8fb;
 }
 * { box-sizing: border-box; }
+html { background: #ffffff; }
 body {
   margin: 0;
-  background: var(--soft);
+  background: #ffffff;
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Sans", Meiryo, sans-serif;
-  line-height: 1.85;
+  font-size: 10.5pt;
+  line-height: 1.78;
 }
 main {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 48px 28px 72px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
   background: var(--paper);
-  min-height: 100vh;
+  min-height: 0;
 }
 h1 {
-  margin: 0 0 28px;
-  padding-bottom: 18px;
+  margin: 0 0 14mm;
+  padding: 0 0 7mm;
   border-bottom: 4px solid var(--accent);
-  font-size: 2rem;
+  font-size: 21pt;
   line-height: 1.35;
   letter-spacing: 0.02em;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+h1::before {
+  content: "PTA適正化推進委員会 / 教育委員会・学校管理職向け資料";
+  display: block;
+  margin-bottom: 8mm;
+  padding: 3mm 4mm;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 h2 {
-  margin-top: 44px;
-  padding: 10px 0 10px 16px;
+  margin: 12mm 0 4mm;
+  padding: 2.5mm 0 2.5mm 4mm;
   border-left: 6px solid var(--accent);
   border-bottom: 1px solid var(--line);
-  font-size: 1.35rem;
-  line-height: 1.5;
+  font-size: 14.5pt;
+  line-height: 1.45;
+  page-break-after: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 h3 {
-  margin-top: 32px;
-  font-size: 1.12rem;
+  margin: 8mm 0 3mm;
+  font-size: 11.6pt;
   color: var(--accent);
+  page-break-after: avoid;
+  break-after: avoid;
 }
-p { margin: 1em 0; }
-ul, ol { padding-left: 1.5em; }
-li { margin: 0.35em 0; }
+p {
+  margin: 0 0 3.8mm;
+  orphans: 2;
+  widows: 2;
+}
+ul, ol {
+  padding-left: 1.5em;
+  margin: 0 0 4mm;
+}
+li {
+  margin: 0 0 1.8mm;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
 code {
   padding: 0.1em 0.35em;
   border-radius: 4px;
   background: #eef2f6;
+  font-family: "Noto Sans Mono CJK JP", monospace;
 }
-hr { border: none; border-top: 1px solid var(--line); margin: 32px 0; }
+hr { border: none; border-top: 1px solid var(--line); margin: 8mm 0; }
 .note {
-  margin-top: 40px;
-  padding: 14px 18px;
+  margin-top: 8mm;
+  padding: 4mm 5mm;
   background: #f2f6fa;
   border-left: 5px solid var(--accent);
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+@media screen {
+  body { background: var(--soft); }
+  main { max-width: 920px; margin: 0 auto; padding: 48px 28px 72px; min-height: 100vh; }
 }
 """.strip()
 
@@ -398,26 +441,26 @@ def build_survey_xlsx(report: list[str]) -> None:
         guide_sheet.get_range("A:B").format.column_width = 38
         guide_sheet.get_range("A1:B4").format.wrap_text = True
 
-        source_headers = ["id", "資料種別", "資料名", "発行主体", "発出日", "確認日", "URL", "関連論点", "掲載先", "備考"]
+        source_headers = ["id", "資料種別", "資料名", "発行主体", "発出日", "確認日", "URL", "関連論点", "引用箇所", "掲載先", "備考"]
         source_values = [source_headers]
         for row in source_rows:
             source_values.append([row.get(header, "") for header in source_headers])
         sources_end_row = len(source_values)
-        sources_sheet.get_range(f"A1:J{sources_end_row}").values = source_values
+        sources_sheet.get_range(f"A1:K{sources_end_row}").values = source_values
         sources_sheet.freeze_panes.freeze_rows(1)
-        sources_sheet.get_range("A1:J1").format = {
+        sources_sheet.get_range("A1:K1").format = {
             "fill": "#0B3A67",
             "font": {"bold": True, "color": "#FFFFFF"},
             "horizontal_alignment": "center",
         }
-        sources_sheet.get_range(f"A2:J{sources_end_row}").format.wrap_text = True
+        sources_sheet.get_range(f"A2:K{sources_end_row}").format.wrap_text = True
         sources_sheet.get_range("A:A").format.column_width = 12
         sources_sheet.get_range("B:B").format.column_width = 16
         sources_sheet.get_range("C:C").format.column_width = 36
         sources_sheet.get_range("D:F").format.column_width = 16
         sources_sheet.get_range("G:G").format.column_width = 42
-        sources_sheet.get_range("H:J").format.column_width = 28
-        sources_sheet.tables.add(f"A1:J{sources_end_row}", True, "SourcesTable")
+        sources_sheet.get_range("H:K").format.column_width = 28
+        sources_sheet.tables.add(f"A1:K{sources_end_row}", True, "SourcesTable")
 
         output_path = DIST / "pta-school-separation-school-survey.xlsx"
         SpreadsheetFile.export_xlsx(wb).save(str(output_path))
