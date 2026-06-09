@@ -26,17 +26,18 @@ OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-s
 INFO pdf: pta-school-separation-notice-template.pdf size=127KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
 INFO pdf: pta-school-separation-school-survey-form.pdf size=111KB
-NG step: svg render
+OK step: svg render
 PTA school separation Mermaid render report
 ================================================
 mmdc: /home/runner/work/jp/jp/node_modules/.bin/mmdc
-NG svg: diagrams/chain.mmd ->     at ChildProcess._handle.onexit (node:internal/child_process:293:12)
-NG svg: diagrams/before-after.mmd ->     at ChildProcess._handle.onexit (node:internal/child_process:293:12)
-NG svg: diagrams/scope.mmd ->     at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+puppeteer config: mermaid-puppeteer-config.json
+OK svg: diagrams/chain.mmd -> dist/diagrams-svg/chain.svg
+OK svg: diagrams/before-after.mmd -> dist/diagrams-svg/before-after.svg
+OK svg: diagrams/scope.mmd -> dist/diagrams-svg/scope.svg
 OK public: dist/pdf/pta-school-separation-guideline.pdf -> public/pdf/pta-school-separation-guideline.pdf
 OK public: dist/pdf/pta-school-separation-notice-template.pdf -> public/pdf/pta-school-separation-notice-template.pdf
 OK public: dist/pdf/pta-school-separation-school-survey-form.pdf -> public/pdf/pta-school-separation-school-survey-form.pdf
 OK public: dist/pta-school-separation-school-survey.xlsx -> public/xlsx/pta-school-separation-school-survey.xlsx
-SKIP public: source not found: dist/diagrams-svg/chain.svg
-SKIP public: source not found: dist/diagrams-svg/before-after.svg
-SKIP public: source not found: dist/diagrams-svg/scope.svg
+OK public: dist/diagrams-svg/chain.svg -> public/img/chain.svg
+OK public: dist/diagrams-svg/before-after.svg -> public/img/before-after.svg
+OK public: dist/diagrams-svg/scope.svg -> public/img/scope.svg
