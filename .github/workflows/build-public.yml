@@ -37,14 +37,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Mermaid CLI
-        run: npm install
-
       - name: Install PDF engine and Japanese fonts
         run: |
           sudo apt-get update
