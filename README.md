@@ -1,60 +1,85 @@
-# PTAと学校の分離資料制作リポジトリ
+# PTAと学校の分離資料ページ（ptaorg/jp）
 
-このリポジトリは、教育委員会・学校管理職向けに、PTAと学校の分離原則を説明するための資料を作成・管理し、公開するためのリポジトリです。
+このリポジトリは、教育委員会・学校管理職に向けて、PTAと学校の分離原則を説明する独立資料ページを管理するためのものです。
+
+公開想定URLは次のとおりです。
+
+- https://ptaorg.com/jp/
+
+このページは、PTA適正化推進委員会本体サイトへの入口を増やすためのカード型ポータルではありません。本文で論理を読ませる、行政資料・白書風の説明ページとして構成します。
 
 ## 目的
 
-PTAは、学校の補助機関ではなく、任意加入の社会教育関係団体です。ところが、全国の学校現場では、入会申込記録が確認できないまま会員扱いがなされ、学校徴収金とPTA会費が一体処理され、学校名簿・学校連絡ツール・学校施設・教職員の事務負担を通じて、PTA運営が学校運営と混在している例が見られます。
+PTAは、学校の補助機関ではなく、任意加入の社会教育関係団体です。
 
-本リポジトリでは、そうした混在運用を整理し、教育委員会が学校運営上の課題として分離措置を取るための資料を、この `ptaorg/jp` 内で完結する形で作成します。
+しかし、全国の学校現場では、入会申込記録が確認できないまま保護者が会員扱いされ、学校徴収金とPTA会費が一体処理され、学校名簿・学校連絡ツール・学校施設・教職員の事務負担を通じて、PTA運営が学校運営と混在している例が見られます。
 
-大元サイト `https://ptaorg.com/` は、PTA適正化推進委員会全体の活動・資料・論考への補助導線として扱います。本リポジトリの本文、根拠資料、図表、調査票は、原則としてこのリポジトリ内で管理します。
+このリポジトリでは、そうした混在運用を、PTA内部の自治問題ではなく学校運営上の公私分離の問題として整理し、教育委員会が各学校に対して分離措置を示すための資料を `ptaorg/jp` 内で完結する形で整備します。
 
-## 公開用ページ
+大元サイト `https://ptaorg.com/` は、PTA適正化推進委員会全体の活動・資料・論考への補助導線として扱います。このリポジトリの本文、根拠資料、図表、調査票は、原則としてこのリポジトリ内で管理します。
+
+## 公開ページ
 
 - `index.html`  
-  教育委員会・学校管理職向けの公開用トップページです。カード型ポータルではなく、本文中心の説明ページとして構成しています。
+  教育委員会・学校管理職向けの公開トップページです。青帯ヘッダー、本文中心の章立て、図表、補助資料リンクで構成します。
 
 - `assets/site.css`  
-  公開用ページのスタイルです。
+  公開ページのスタイルです。行政資料風の余白、左線見出し、強調枠、表、図表表示、濃紺フッターを定義します。
 
 - `robots.txt` / `sitemap.xml`  
   公開ページとPDFへの基本的な検索導線です。
 
-## 公開用生成物
+## 配布・共有用資料
 
-公開用成果物は `public/` に配置します。
+公開ページから次の資料にアクセスできるようにしています。
 
-- `public/pdf/`  
-  PDF版のガイドライン、通知ひな形、学校別実態調査票説明を配置します。
+- `public/pdf/pta-school-separation-guideline.pdf`  
+  教育委員会向けガイドラインPDF。
 
-- `public/xlsx/`  
-  学校別実態調査票のExcelファイルを配置します。
+- `public/pdf/pta-school-separation-notice-template.pdf`  
+  教育委員会通知ひな形PDF。
 
-- `public/img/`  
-  Mermaid図から生成したSVGを配置します。
+- `public/pdf/pta-school-separation-school-survey-form.pdf`  
+  学校別実態調査票説明PDF。
 
-- `public/link-check-report.txt`  
-  公開ページ内リンクと必須公開ファイルの確認結果を出力します。
+- `public/xlsx/pta-school-separation-school-survey.xlsx`  
+  学校別実態調査票Excel。
 
-`dist/` は作業用生成物置き場です。公開に使う成果物だけを `public/` にコピーします。
+- `public/img/chain.svg`  
+  入会申込記録の欠落から広がる違法・不適切運用の連鎖図。
 
-## 現在の主要ファイル
+- `public/img/before-after.svg`  
+  現在の混在運用と分離後の運用比較図。
+
+- `public/img/scope.svg`  
+  学校が関与できる範囲・関与すべきでない範囲の整理図。
+
+## 現在の確認状況
+
+GitHub Actions による公開用資料の生成と、公開ページ内のローカルリンク確認は実行済みです。
+
+確認結果は次のファイルに記録しています。
+
+- `public/public-build-report.txt`
+- `public/link-check-report.txt`
+
+`public/link-check-report.txt` では、CSS、SVG、PDF、XLSX、Markdown、CSV、Mermaidソースへの相対リンクが確認済みです。
+
+なお、公開URL `https://ptaorg.com/jp/` のブラウザ実表示確認は、DNS・GitHub Pages設定・キャッシュの影響を受けるため、公開環境上で別途確認します。
+
+## 主な編集対象
 
 - `docs/guideline.md`  
-  教育委員会向けPDF本編の元原稿です。
+  教育委員会向けPDF本編の元原稿です。学校教育法137条、社会教育法12条、民法522条、消費者契約法、個人情報保護法69条、地方公務員法35条、地方財政法4条の5などを、学校とPTAの分離という流れで整理します。
 
 - `docs/notice-template.md`  
-  教育委員会通知ひな形の元原稿です。
+  教育委員会が各学校へ発出する通知ひな形の元原稿です。
 
 - `docs/school-survey-form.md`  
   学校別実態調査票の説明文です。
 
-- `docs/build-instructions.md`  
-  ローカル又は対応環境でのビルド手順です。
-
 - `sources/primary-sources.csv`  
-  法令、通知、一次資料、自治体回答等を管理するための一次資料台帳です。
+  法令、通知、一次資料、自治体回答等を管理する一次資料台帳です。
 
 - `sources/source-notes.md`  
   一次資料の確認状況を記録するメモです。
@@ -62,102 +87,35 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `data/separation-checklist.csv`  
   学校別実態調査票の元データです。
 
-- `diagrams/chain.mmd`  
-  入会申込記録の欠落から広がる違法・不適切運用の連鎖図です。
+- `diagrams/*.mmd`  
+  本文中に表示する図表のMermaidソースです。
 
-- `diagrams/before-after.mmd`  
-  現在の混在運用と分離後の運用を比較する図です。
+## 生成・確認の仕組み
 
-- `diagrams/scope.mmd`  
-  学校が関与できる範囲・関与すべきでない範囲を整理する図です。
+GitHub Actions の `.github/workflows/build-public.yml` により、Markdown、CSV、XLSX、PDF、SVG、公開用ファイル配置、リンク確認をまとめて実行します。
 
-- `scripts/build.py`  
-  Markdown、CSV、Mermaid図を確認・変換し、対応環境ではExcel調査票も生成する最小ビルドスクリプトです。
+作業用の生成物は `dist/` に置き、公開ページから参照する成果物は `public/` に配置します。
 
-- `scripts/build_plain_xlsx.py`  
-  標準ライブラリだけで学校別実態調査票XLSXを生成する補助スクリプトです。
+## 未確認資料の扱い
 
-- `scripts/render_diagrams.py`  
-  Mermaid CLI が利用できる環境で、Mermaid図をSVG化する補助スクリプトです。
+横浜市教育委員会通知、仙台市教育委員会回答、広島市教育委員会回答は重要資料ですが、本文該当箇所、正式URL、発出日等の確認が完了するまでは、断定引用しません。
 
-- `scripts/build_pdf.py`  
-  確認用HTMLからPDFを生成する補助スクリプトです。
-
-- `scripts/publish_public.py`  
-  生成できたPDF、XLSX、SVGを `public/` に配置する公開用ビルドスクリプトです。
-
-- `scripts/check_public_links.py`  
-  `index.html` の相対リンクと、`public/` に必要な公開成果物が存在するか確認するスクリプトです。
-
-- `.github/workflows/build-public.yml`  
-  GitHub Actionsで公開用生成物を作成し、リンク確認を行い、`public/` を更新するワークフローです。
-
-- `package.json`  
-  Mermaid CLI を導入するためのNode.js設定です。
-
-## 実行コマンド
-
-通常ビルド:
-
-```bash
-python scripts/build.py
-```
-
-標準ライブラリ版XLSX生成:
-
-```bash
-python scripts/build_plain_xlsx.py
-```
-
-Mermaid図のSVG化:
-
-```bash
-npm install
-python scripts/render_diagrams.py
-```
-
-PDF生成:
-
-```bash
-python scripts/build_pdf.py
-```
-
-公開用生成物の配置:
-
-```bash
-python scripts/publish_public.py
-```
-
-公開リンク確認:
-
-```bash
-python scripts/check_public_links.py
-```
-
-公開URLも確認する場合:
-
-```bash
-python scripts/check_public_links.py --base-url https://ptaorg.com/jp/
-```
-
-詳細は `docs/build-instructions.md` を参照してください。
-
-## 現段階で行っていないこと
-
-- 公開URL上でのHTTPリンク確認結果は、環境により確認が必要です。
-- 横浜市通知、仙台市回答、広島市回答は、正式URL又は本文確認が未了のため、断定引用していません。
+確認が済んだものから `sources/primary-sources.csv` に反映し、`docs/guideline.md` の本文に組み込みます。
 
 ## 今後の作業方針
 
-1. `public/link-check-report.txt` の結果を確認する。
-2. 公開URL `https://ptaorg.com/jp/` で表示確認する。
-3. `sources/primary-sources.csv` の未確認資料を精査する。
-4. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
-5. 公開ページ上のPDF・XLSX・SVGリンクを確認する。
+1. 公開URL `https://ptaorg.com/jp/` のブラウザ実表示を確認する。
+2. `index.html` の冒頭から第5章までを、教育委員会が学校運営上の問題として受け止められる文章に強化する。
+3. `docs/guideline.md` を一次資料IDに基づき本格改稿する。
+4. 未確認資料の正式情報を確認し、一次資料台帳へ反映する。
+5. PDFの改ページ、本文密度、行政資料としての見た目を点検する。
 
 ## 編集上の注意
 
-- 本リポジトリは、カード型ポータルを作るためではなく、教育委員会が内部共有できる論理資料を整備するためのものです。
-- 本文を薄くしてリンク集化しないでください。
-- 確認していないURL、資料、法令、判例を断定しないでください。
-- 大元サイトへのリンクは補助導線であり、このリポジトリの本文や根拠資料の代替ではありません。
+- カード型ポータル化しない。
+- タグやリンク一覧を増やして整理したことにしない。
+- 本文を薄くしてリンク集化しない。
+- 既存の論理説明を理由なく短くしない。
+- 確認していないURL、資料、法令、判例を断定しない。
+- 大元サイトへのリンクは補助導線に留める。
+- 公開ページには、scripts、GitHub Actions、public配置などの内部制作手順を見せない。
