@@ -8,7 +8,7 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 
 本リポジトリでは、そうした混在運用を整理し、教育委員会が学校運営上の課題として分離措置を取るための資料を作成します。
 
-## 第1段階で作成したファイル
+## 現在の主要ファイル
 
 - `docs/guideline.md`  
   教育委員会向けPDF本編の元原稿です。現段階ではMarkdown本文であり、PDF生成はまだ行っていません。
@@ -16,11 +16,20 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `docs/notice-template.md`  
   教育委員会通知ひな形の元原稿です。
 
+- `docs/school-survey-form.md`  
+  学校別実態調査票の説明文です。
+
+- `docs/build-instructions.md`  
+  ローカル又は対応環境でのビルド手順です。
+
 - `sources/primary-sources.csv`  
   法令、通知、一次資料、自治体回答等を管理するための一次資料台帳です。
 
+- `sources/source-notes.md`  
+  一次資料の確認状況を記録するメモです。
+
 - `data/separation-checklist.csv`  
-  学校・PTA分離チェックシートの元データです。
+  学校別実態調査票の元データです。
 
 - `diagrams/chain.mmd`  
   入会申込記録の欠落から広がる違法・不適切運用の連鎖図です。
@@ -31,22 +40,32 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `diagrams/scope.mmd`  
   学校が関与できる範囲・関与すべきでない範囲を整理する図です。
 
+- `scripts/build.py`  
+  Markdown、CSV、Mermaid図を確認・変換する最小ビルドスクリプトです。
+
+## 実行コマンド
+
+```bash
+python scripts/build.py
+```
+
+詳細は `docs/build-instructions.md` を参照してください。
+
 ## 現段階で行っていないこと
 
 - PDF生成はまだ行っていません。
-- Excel生成はまだ行っていません。
+- Mermaid図のSVG化はまだ行っていません。
 - `ptaorg.com` または `ptaorg.github.io` 本体サイトへの反映はまだ行っていません。
-- 図表のSVG化はまだ行っていません。
-- 一次資料台帳のURL・発出日・引用箇所は、今後確認しながら精査します。
+- `dist/` 生成物の自動コミットは行っていません。
+- 横浜市通知、仙台市回答、広島市回答は、正式URL又は本文確認が未了のため、断定引用していません。
 
 ## 今後の作業方針
 
-1. `docs/guideline.md` の本文を精査する。
-2. `sources/primary-sources.csv` に確認済み一次資料を追加する。
-3. `data/separation-checklist.csv` の項目を実務で使える形に整える。
-4. Mermaid図を確認し、必要に応じてSVG化する。
-5. 生成スクリプトを追加し、PDF・Excel・SVGを `dist/` に出力できるようにする。
-6. 完成物のみを本体サイトへ反映する。
+1. `sources/primary-sources.csv` の未確認資料を精査する。
+2. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
+3. Mermaid図を確認し、必要に応じてSVG化する。
+4. 生成スクリプトにPDF生成を追加する。
+5. 完成物のみを本体サイトへ反映する。
 
 ## 編集上の注意
 
