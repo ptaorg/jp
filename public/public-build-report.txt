@@ -27,13 +27,12 @@ INFO pdf: pta-school-separation-notice-template.pdf size=141KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
 INFO pdf: pta-school-separation-school-survey-form.pdf size=124KB
 OK step: svg render
-PTA school separation Mermaid render report
-================================================
-mmdc: /home/runner/work/jp/jp/node_modules/.bin/mmdc
-puppeteer config: mermaid-puppeteer-config.json
-OK svg: diagrams/chain.mmd -> dist/diagrams-svg/chain.svg
-OK svg: diagrams/before-after.mmd -> dist/diagrams-svg/before-after.svg
-OK svg: diagrams/scope.mmd -> dist/diagrams-svg/scope.svg
+PTA school separation SVG render report
+======================================
+renderer: fixed-layout SVG generator
+OK svg: dist/diagrams-svg/chain.svg
+OK svg: dist/diagrams-svg/before-after.svg
+OK svg: dist/diagrams-svg/scope.svg
 OK public: dist/pdf/pta-school-separation-guideline.pdf -> public/pdf/pta-school-separation-guideline.pdf
 OK public: dist/pdf/pta-school-separation-notice-template.pdf -> public/pdf/pta-school-separation-notice-template.pdf
 OK public: dist/pdf/pta-school-separation-school-survey-form.pdf -> public/pdf/pta-school-separation-school-survey-form.pdf
