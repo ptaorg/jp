@@ -1,6 +1,6 @@
 # ビルド手順
 
-この文書は、`ptaorg/jp` に置いた元データから、確認用HTML、学校別実態調査票、Mermaid図ソース、必要に応じてMermaid図SVG、PDFを生成するための手順です。
+この文書は、`ptaorg/jp` に置いた元データから、確認用HTML、学校別実態調査票、Mermaid図ソース、必要に応じてMermaid図SVG、PDF、公開用成果物を生成するための手順です。
 
 ## 1. 通常ビルド
 
@@ -22,7 +22,19 @@
 python scripts/build.py
 ```
 
-## 2. Mermaid図のSVG化
+## 2. 標準ライブラリ版XLSX生成
+
+GitHub Actionsなど、`artifact_tool` が使えない環境では、標準ライブラリ版のXLSX生成を使います。
+
+```bash
+python scripts/build_plain_xlsx.py
+```
+
+生成されるファイル:
+
+- `dist/pta-school-separation-school-survey.xlsx`
+
+## 3. Mermaid図のSVG化
 
 Mermaid図をSVGに変換する場合は、Node.js と Mermaid CLI が必要です。
 
@@ -53,7 +65,7 @@ npm run render:diagrams
 
 Mermaid CLI が見つからない場合、スクリプトは失敗扱いにせず、`SKIP svg` として終了します。
 
-## 3. PDF生成
+## 4. PDF生成
 
 PDF生成は、通常ビルドで作成した `dist/*.html` を変換する方式です。
 
@@ -80,29 +92,38 @@ PDF変換エンジンは、次の順に探します。
 
 いずれも見つからない場合、スクリプトは失敗扱いにせず、`SKIP pdf` として終了します。
 
-## 4. 注意
+## 5. 公開用成果物の配置
+
+公開ページから直接リンクする成果物は、`public/` に配置します。
+
+```bash
+python scripts/publish_public.py
+```
+
+配置先:
+
+- `public/pdf/`
+- `public/xlsx/`
+- `public/img/`
+
+GitHub Actions の `Build public materials` も同じ処理を実行します。
+
+## 6. 注意
 
 現段階では、次のことを行いません。
 
 - PDFのレンダリング画像検証
-- `ptaorg.com` 又は `ptaorg.github.io` 本体サイトへの反映
-- `dist/` 生成物の自動コミット
+- 大元サイト `ptaorg.com` 側の編集
 
-`dist/` は生成物置き場であり、`.gitignore` により通常はGit管理しません。
+`dist/` は生成物置き場であり、`.gitignore` により通常はGit管理しません。公開に必要な成果物だけを `public/` に配置します。
 
-## 5. Excel生成について
+## 7. Excel生成について
 
-学校別実態調査票のExcel生成には `artifact_tool` を使います。
+学校別実態調査票のExcel生成には、通常は `scripts/build_plain_xlsx.py` を使います。これは標準ライブラリだけで動作するため、GitHub Actionsでも扱いやすい方式です。
 
-ChatGPTの実行環境では利用できる場合がありますが、一般のローカルPCやGitHub Actionsでは利用できない可能性があります。その場合、`scripts/build.py` はExcel生成だけをスキップし、HTML生成、CSV検証、Mermaid図コピーは続行します。
+ChatGPT実行環境では `artifact_tool` 版のExcel生成も使えますが、公開用生成では標準ライブラリ版を優先します。
 
-Excel生成がスキップされた場合、`dist/build-report.txt` に次のような行が出ます。
-
-```text
-SKIP xlsx: artifact_tool is not installed in this environment
-```
-
-## 6. CSV検証
+## 8. CSV検証
 
 `build.py` は、次のCSVのヘッダーを検証します。
 
@@ -111,12 +132,12 @@ SKIP xlsx: artifact_tool is not installed in this environment
 
 ヘッダーが想定と異なる場合、`build-report.txt` に `NG csv` と表示されます。
 
-## 7. 今後追加する予定の処理
+## 9. 今後追加する予定の処理
 
 今後、必要に応じて次の処理を追加します。
 
 1. PDFレンダリング検証
 2. PDF用CSSの調整
-3. 本体サイト掲載用HTMLへの整形
+3. 公開ページ上のリンク確認
 
-ただし、本体サイトへの反映は、本文・根拠資料・図表・チェックシートの内容が固まってから行います。
+ただし、大元サイトへの反映は行わず、まずは `ptaorg/jp` 内で完結させます。
