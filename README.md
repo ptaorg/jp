@@ -11,7 +11,7 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 ## 現在の主要ファイル
 
 - `docs/guideline.md`  
-  教育委員会向けPDF本編の元原稿です。現段階ではMarkdown本文であり、PDF生成はまだ行っていません。
+  教育委員会向けPDF本編の元原稿です。
 
 - `docs/notice-template.md`  
   教育委員会通知ひな形の元原稿です。
@@ -46,6 +46,9 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `scripts/render_diagrams.py`  
   Mermaid CLI が利用できる環境で、Mermaid図をSVG化する補助スクリプトです。
 
+- `scripts/build_pdf.py`  
+  確認用HTMLからPDFを生成する補助スクリプトです。
+
 - `package.json`  
   Mermaid CLI を導入するためのNode.js設定です。
 
@@ -70,11 +73,17 @@ python scripts/render_diagrams.py
 npm run render:diagrams
 ```
 
+PDF生成:
+
+```bash
+python scripts/build_pdf.py
+```
+
 詳細は `docs/build-instructions.md` を参照してください。
 
 ## 現段階で行っていないこと
 
-- PDF生成はまだ行っていません。
+- PDFのレンダリング画像検証はまだ行っていません。
 - `ptaorg.com` または `ptaorg.github.io` 本体サイトへの反映はまだ行っていません。
 - `dist/` 生成物の自動コミットは行っていません。
 - 横浜市通知、仙台市回答、広島市回答は、正式URL又は本文確認が未了のため、断定引用していません。
@@ -84,7 +93,7 @@ npm run render:diagrams
 1. `sources/primary-sources.csv` の未確認資料を精査する。
 2. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
 3. Mermaid図のSVG出力結果を確認する。
-4. 生成スクリプトにPDF生成を追加する。
+4. PDF出力結果をレンダリング画像で検証する。
 5. 完成物のみを本体サイトへ反映する。
 
 ## 編集上の注意
