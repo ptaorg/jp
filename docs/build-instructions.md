@@ -38,6 +38,8 @@ python scripts/build_plain_xlsx.py
 
 - `dist/pta-school-separation-school-survey.xlsx`
 
+公開用XLSXの「根拠資料」シートには、一次資料台帳の `引用箇所` 列を含めます。教育委員会が調査票を読む際、単なる資料名ではなく、その資料のどの論点を参照しているのか確認できるようにするためです。
+
 ## 3. Mermaid図のSVG化
 
 Mermaid図をSVGに変換する場合は、Node.js と Mermaid CLI が必要です。
@@ -140,6 +142,9 @@ GitHub Actions の `Build public materials` では、ローカル存在確認を
 2. `data/separation-checklist.csv` が31項目として検証され、Excelへ反映されていること。
 3. 公開ページのリンクがPDF・Excel・一次資料台帳・調査票CSVに限定され、Markdown原稿やMermaidソースへの読者向け導線が出ていないこと。
 4. 生成PDFに内部制作メモが混入していないこと。
+5. PDFの余白、見出し、本文行間が行政資料として読める状態であること。
+6. PDFで見出しだけがページ末尾に孤立しないこと。
+7. 公開用XLSXの「根拠資料」シートに `引用箇所` 列が含まれていること。
 
 ## 8. 注意
 
