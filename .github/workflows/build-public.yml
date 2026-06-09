@@ -1,0 +1,53 @@
+name: Build public materials
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'data/**'
+      - 'sources/**'
+      - 'diagrams/**'
+      - 'scripts/**'
+      - 'package.json'
+      - '.github/workflows/build-public.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-public:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Mermaid CLI
+        run: npm install
+
+      - name: Install PDF engine
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wkhtmltopdf
+
+      - name: Build public materials
+        run: python scripts/publish_public.py
+
+      - name: Commit generated public materials
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Build public materials
+          file_pattern: public/**
