@@ -41,12 +41,33 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
   学校が関与できる範囲・関与すべきでない範囲を整理する図です。
 
 - `scripts/build.py`  
-  Markdown、CSV、Mermaid図を確認・変換する最小ビルドスクリプトです。
+  Markdown、CSV、Mermaid図を確認・変換し、対応環境ではExcel調査票も生成する最小ビルドスクリプトです。
+
+- `scripts/render_diagrams.py`  
+  Mermaid CLI が利用できる環境で、Mermaid図をSVG化する補助スクリプトです。
+
+- `package.json`  
+  Mermaid CLI を導入するためのNode.js設定です。
 
 ## 実行コマンド
 
+通常ビルド:
+
 ```bash
 python scripts/build.py
+```
+
+Mermaid図のSVG化:
+
+```bash
+npm install
+python scripts/render_diagrams.py
+```
+
+又は、次でも実行できます。
+
+```bash
+npm run render:diagrams
 ```
 
 詳細は `docs/build-instructions.md` を参照してください。
@@ -54,7 +75,6 @@ python scripts/build.py
 ## 現段階で行っていないこと
 
 - PDF生成はまだ行っていません。
-- Mermaid図のSVG化はまだ行っていません。
 - `ptaorg.com` または `ptaorg.github.io` 本体サイトへの反映はまだ行っていません。
 - `dist/` 生成物の自動コミットは行っていません。
 - 横浜市通知、仙台市回答、広島市回答は、正式URL又は本文確認が未了のため、断定引用していません。
@@ -63,7 +83,7 @@ python scripts/build.py
 
 1. `sources/primary-sources.csv` の未確認資料を精査する。
 2. `docs/guideline.md` の本文を一次資料に基づいてさらに補強する。
-3. Mermaid図を確認し、必要に応じてSVG化する。
+3. Mermaid図のSVG出力結果を確認する。
 4. 生成スクリプトにPDF生成を追加する。
 5. 完成物のみを本体サイトへ反映する。
 
