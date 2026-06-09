@@ -60,7 +60,7 @@ main {
 }
 
 article {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
   padding-top: 44px;
 }
@@ -168,10 +168,10 @@ a {
 }
 
 .diagram-figure {
-  margin: 30px 0;
-  padding: 18px;
-  background: #fbfdff;
-  border: 1px solid var(--line);
+  margin: 32px 0 36px;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 .diagram-figure figcaption {
@@ -182,20 +182,21 @@ a {
 }
 
 .diagram-scroll {
-  overflow-x: auto;
-  padding-bottom: 6px;
+  overflow-x: visible;
+  padding-bottom: 0;
 }
 
 .diagram-scroll img {
   display: block;
+  width: 100%;
   max-width: 100%;
   height: auto;
   margin: 0 auto;
 }
 
 .diagram-scroll img.wide-diagram {
-  min-width: 980px;
-  max-width: none;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .table-wrap {
@@ -266,8 +267,7 @@ th {
   }
 
   .diagram-figure {
-    margin-left: -4px;
-    margin-right: -4px;
-    padding: 12px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
