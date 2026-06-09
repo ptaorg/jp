@@ -1,0 +1,32 @@
+PTA school separation public link check
+======================================
+Local link check
+----------------
+SKIP external: https://ptaorg.com/jp/
+OK local: assets/site.css
+OK local: public/img/chain.svg
+OK local: public/img/before-after.svg
+OK local: public/img/scope.svg
+OK local: public/pdf/pta-school-separation-guideline.pdf
+OK local: public/pdf/pta-school-separation-notice-template.pdf
+OK local: public/pdf/pta-school-separation-school-survey-form.pdf
+OK local: public/xlsx/pta-school-separation-school-survey.xlsx
+SKIP external: https://ptaorg.com/
+OK local: docs/guideline.md
+OK local: docs/notice-template.md
+OK local: docs/school-survey-form.md
+OK local: sources/primary-sources.csv
+OK local: data/separation-checklist.csv
+OK local: diagrams/chain.mmd
+OK local: diagrams/before-after.mmd
+OK local: diagrams/scope.mmd
+
+Required public files
+---------------------
+OK required: public/pdf/pta-school-separation-guideline.pdf
+OK required: public/pdf/pta-school-separation-notice-template.pdf
+OK required: public/pdf/pta-school-separation-school-survey-form.pdf
+OK required: public/xlsx/pta-school-separation-school-survey.xlsx
+OK required: public/img/chain.svg
+OK required: public/img/before-after.svg
+OK required: public/img/scope.svg
