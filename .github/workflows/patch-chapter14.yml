@@ -1,0 +1,120 @@
+name: Patch chapter 14
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-chapter14.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch chapter 14
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          docs = Path('docs/guideline.md')
+          text = docs.read_text(encoding='utf-8')
+          marker = '## 14. 根拠資料の確認\n'
+          if marker not in text:
+              raise SystemExit('chapter 14 marker not found in docs/guideline.md')
+          head = text.split(marker, 1)[0]
+          chapter14 = '''## 14. 根拠資料の確認
+
+第十四章では、本文で用いた法令、通知、行政資料、自治体回答の確認方法を整理します。この文書では、本文の主張と根拠資料を対応させるため、確認済み一次資料を `sources/primary-sources.csv` で管理します。
+
+一次資料台帳のIDは、本文中の根拠資料IDと対応します。法令、国の通知・行政資料、個人情報保護委員会資料、消費者庁資料、自治体通知・回答は、それぞれ性質が異なります。法令は全国共通の根拠であり、通知・行政資料は実務上の補助資料です。自治体通知・回答は、個別自治体の運用又は見解を示す資料であり、全国共通の法的根拠そのものとしては扱いません。
+
+学校施設利用については、学校教育法第137条、地方自治法第238条の4第7項、文部科学省の目的外使用通知を対応させて確認します。個人情報については、個人情報保護法第61条、第69条、第70条と、個人情報保護委員会事務局資料を対応させて確認します。教職員関与については、地方公務員法第35条、職務専念義務、文部科学省の業務適正化資料を対応させて確認します。
+
+重要な自治体通知や教育委員会回答であっても、発出日、正式URL、本文、文書画像、回答主体が確認できないものは、確認未了資料として扱います。確認未了資料は、今後反映する候補として台帳に残しますが、正式確認が終わるまでは本文内で断定的に引用しません。
+
+一次資料台帳は、本文の代替ではありません。本文で述べた論理を、読者が後から確認できるようにするための根拠管理資料です。教育委員会内部で検討する場合も、法令、通知、行政資料、自治体回答を混同せず、それぞれの性質と射程を区別して確認する必要があります。
+
+### 一次資料台帳で管理する事項
+
+一次資料台帳では、資料ID、資料種別、資料名、発行主体、発出日、確認日、URL、関連論点、引用箇所、掲載先、備考を管理します。資料IDは、本文末尾の「根拠資料ID」と対応させ、どの章のどの論点がどの資料に基づくのかを後から確認できるようにします。
+
+資料の掲載順は、主張の強さを示すものではありません。法令、通知、行政資料、自治体回答は、それぞれ根拠としての性質と射程が異なるため、本文で使う場合にも、同じ重さの根拠として扱わないよう注意します。
+
+### 法令
+
+- L019　民法第521条
+- L001　民法第522条
+- L002　民法第113条
+- L003　学校教育法第137条
+- L004　社会教育法第10条
+- L005　社会教育法第12条
+- L006　個人情報保護法第61条
+- L007　個人情報保護法第62条
+- L008　個人情報保護法第69条
+- L009　個人情報保護法第70条
+- L010　消費者契約法第1条
+- L011　消費者契約法第3条
+- L012　消費者契約法第4条
+- L013　消費者契約法第10条
+- L014　地方公務員法第34条
+- L015　地方公務員法第35条
+- L016　地方公務員法第38条
+- L017　地方財政法第4条の5
+- L018　地方自治法第238条の4第7項
+
+### 通知・行政資料
+
+- M001　公立学校施設の目的外使用に係る留意事項の周知について（通知）
+- M002　学校・教師が担う業務に係る3分類 更なる役割分担・適正化の推進に向けた取組について
+- P001　公立学校とPTAの間で個人情報のやり取りをするためのポイント
+- C001　消費者契約法逐条解説 第2条（定義）
+
+### 今後確認して反映する資料
+
+次の資料は重要ですが、現段階では発出日、正式URL、本文該当箇所の確認が未了です。確認できるまでは、本文内で断定的な引用を行いません。
+
+- Y001　横浜市教育委員会通知 学教第1965号
+- A001　仙台市教育委員会回答
+- A002　広島市教育委員会回答
+'''
+          docs.write_text(head + chapter14, encoding='utf-8')
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          start_marker = '      <section class="source-box" aria-labelledby="s14">'
+          end_marker = '      <section aria-labelledby="s15">'
+          if start_marker not in html or end_marker not in html:
+              raise SystemExit('chapter 14 markers not found in index.html')
+          start = html.index(start_marker)
+          end = html.index(end_marker, start)
+          new_section = '''      <section class="source-box" aria-labelledby="s14">
+        <h2 id="s14">14　根拠資料の確認</h2>
+        <p>第十四章では、本文で用いた法令、通知、行政資料、自治体回答の確認方法を整理します。このページでは、本文の主張と根拠資料を対応させるため、確認済み一次資料を <code>sources/primary-sources.csv</code> で管理します。</p>
+        <p>一次資料台帳のIDは、本文中の根拠資料IDと対応します。法令、国の通知・行政資料、個人情報保護委員会資料、消費者庁資料、自治体通知・回答は、それぞれ性質が異なります。法令は全国共通の根拠であり、通知・行政資料は実務上の補助資料です。自治体通知・回答は、個別自治体の運用又は見解を示す資料であり、全国共通の法的根拠そのものとしては扱いません。</p>
+        <p>学校施設利用については、学校教育法第137条、地方自治法第238条の4第7項、文部科学省の目的外使用通知を対応させて確認します。個人情報については、個人情報保護法第61条、第69条、第70条と、個人情報保護委員会事務局資料を対応させて確認します。教職員関与については、地方公務員法第35条、職務専念義務、文部科学省の業務適正化資料を対応させて確認します。</p>
+        <p>重要な自治体通知や教育委員会回答であっても、発出日、正式URL、本文、文書画像、回答主体が確認できないものは、確認未了資料として扱います。確認未了資料は、今後反映する候補として台帳に残しますが、正式確認が終わるまでは本文内で断定的に引用しません。</p>
+        <p>一次資料台帳は、本文の代替ではありません。本文で述べた論理を、読者が後から確認できるようにするための根拠管理資料です。教育委員会内部で検討する場合も、法令、通知、行政資料、自治体回答を混同せず、それぞれの性質と射程を区別して確認する必要があります。</p>
+        <ul>
+          <li><a href="sources/primary-sources.csv" target="_blank" rel="noopener noreferrer">一次資料台帳 CSV</a></li>
+          <li><a href="data/separation-checklist.csv" target="_blank" rel="noopener noreferrer">学校別実態調査票の確認項目 CSV</a></li>
+        </ul>
+        <p class="small-note">図表は本文中に掲載しています。Markdown原稿や図表ソースは制作管理用のファイルであり、公開ページの補助導線には出していません。</p>
+      </section>
+
+'''
+          index.write_text(html[:start] + new_section + html[end:], encoding='utf-8')
+
+          wf = Path('.github/workflows/patch-chapter14.yml')
+          if wf.exists():
+              wf.unlink()
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/guideline.md index.html .github/workflows/patch-chapter14.yml
+          git commit -m "Expand chapter 14 source verification" || exit 0
+          git push
