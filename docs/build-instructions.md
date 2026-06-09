@@ -1,6 +1,6 @@
 # ビルド手順
 
-この文書は、`ptaorg/jp` に置いた元データから、確認用HTML、学校別実態調査票、Mermaid図ソース、必要に応じてMermaid図SVGを生成するための手順です。
+この文書は、`ptaorg/jp` に置いた元データから、確認用HTML、学校別実態調査票、Mermaid図ソース、必要に応じてMermaid図SVG、PDFを生成するための手順です。
 
 ## 1. 通常ビルド
 
@@ -53,17 +53,44 @@ npm run render:diagrams
 
 Mermaid CLI が見つからない場合、スクリプトは失敗扱いにせず、`SKIP svg` として終了します。
 
-## 3. 注意
+## 3. PDF生成
+
+PDF生成は、通常ビルドで作成した `dist/*.html` を変換する方式です。
+
+実行コマンド:
+
+```bash
+python scripts/build_pdf.py
+```
+
+生成されるファイル:
+
+- `dist/pdf/pta-school-separation-guideline.pdf`
+- `dist/pdf/pta-school-separation-notice-template.pdf`
+- `dist/pdf/pta-school-separation-school-survey-form.pdf`
+- `dist/pdf-build-report.txt`
+
+`dist/*.html` が未生成の場合、`scripts/build_pdf.py` は先に `scripts/build.py` を実行します。
+
+PDF変換エンジンは、次の順に探します。
+
+1. WeasyPrint Python module
+2. `wkhtmltopdf`
+3. Google Chrome / Chromium の headless PDF出力
+
+いずれも見つからない場合、スクリプトは失敗扱いにせず、`SKIP pdf` として終了します。
+
+## 4. 注意
 
 現段階では、次のことを行いません。
 
-- PDF生成
+- PDFのレンダリング画像検証
 - `ptaorg.com` 又は `ptaorg.github.io` 本体サイトへの反映
 - `dist/` 生成物の自動コミット
 
 `dist/` は生成物置き場であり、`.gitignore` により通常はGit管理しません。
 
-## 4. Excel生成について
+## 5. Excel生成について
 
 学校別実態調査票のExcel生成には `artifact_tool` を使います。
 
@@ -75,7 +102,7 @@ Excel生成がスキップされた場合、`dist/build-report.txt` に次のよ
 SKIP xlsx: artifact_tool is not installed in this environment
 ```
 
-## 5. CSV検証
+## 6. CSV検証
 
 `build.py` は、次のCSVのヘッダーを検証します。
 
@@ -84,13 +111,12 @@ SKIP xlsx: artifact_tool is not installed in this environment
 
 ヘッダーが想定と異なる場合、`build-report.txt` に `NG csv` と表示されます。
 
-## 6. 今後追加する予定の処理
+## 7. 今後追加する予定の処理
 
 今後、必要に応じて次の処理を追加します。
 
-1. ガイドライン本文のPDF生成
-2. 通知ひな形のPDF生成
-3. 学校別実態調査票のPDF版生成
-4. 本体サイト掲載用HTMLへの整形
+1. PDFレンダリング検証
+2. PDF用CSSの調整
+3. 本体サイト掲載用HTMLへの整形
 
 ただし、本体サイトへの反映は、本文・根拠資料・図表・チェックシートの内容が固まってから行います。
