@@ -21,7 +21,7 @@ PTA school separation PDF build report
 ======================================
 PDF engine: wkhtmltopdf (/usr/bin/wkhtmltopdf)
 OK pdf: dist/pta-school-separation-guideline.html -> dist/pdf/pta-school-separation-guideline.pdf
-INFO pdf: pta-school-separation-guideline.pdf size=242KB
+INFO pdf: pta-school-separation-guideline.pdf size=246KB
 OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-separation-notice-template.pdf
 INFO pdf: pta-school-separation-notice-template.pdf size=142KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
