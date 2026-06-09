@@ -183,20 +183,22 @@ a {
 }
 
 .diagram-scroll {
-  overflow-x: visible;
-  padding-bottom: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
 }
 
 .diagram-scroll img {
   display: block;
   width: 100%;
+  min-width: 760px;
   max-width: 100%;
   height: auto;
   margin: 0 auto;
 }
 
 .diagram-scroll img.wide-diagram {
-  min-width: 0;
+  min-width: 880px;
   max-width: 100%;
 }
 
