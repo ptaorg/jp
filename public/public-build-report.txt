@@ -9,7 +9,7 @@ OK docs: docs/guideline.md -> dist/pta-school-separation-guideline.html
 OK docs: docs/notice-template.md -> dist/pta-school-separation-notice-template.html
 OK docs: docs/school-survey-form.md -> dist/pta-school-separation-school-survey-form.html
 OK csv: sources/primary-sources.csv rows=25 message=ok
-OK csv: data/separation-checklist.csv rows=25 message=ok
+OK csv: data/separation-checklist.csv rows=31 message=ok
 OK diagram: diagrams/chain.mmd -> dist/diagrams/chain.mmd
 OK diagram: diagrams/before-after.mmd -> dist/diagrams/before-after.mmd
 OK diagram: diagrams/scope.mmd -> dist/diagrams/scope.mmd
@@ -23,9 +23,9 @@ PDF engine: wkhtmltopdf (/usr/bin/wkhtmltopdf)
 OK pdf: dist/pta-school-separation-guideline.html -> dist/pdf/pta-school-separation-guideline.pdf
 INFO pdf: pta-school-separation-guideline.pdf size=182KB
 OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-separation-notice-template.pdf
-INFO pdf: pta-school-separation-notice-template.pdf size=127KB
+INFO pdf: pta-school-separation-notice-template.pdf size=141KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
-INFO pdf: pta-school-separation-school-survey-form.pdf size=111KB
+INFO pdf: pta-school-separation-school-survey-form.pdf size=125KB
 OK step: svg render
 PTA school separation Mermaid render report
 ================================================
