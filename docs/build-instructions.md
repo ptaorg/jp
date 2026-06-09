@@ -1,6 +1,6 @@
 # ビルド手順
 
-この文書は、`ptaorg/jp` に置いた元データから、確認用HTML、学校別実態調査票、Mermaid図ソース、Mermaid図SVG、PDF、公開用成果物を生成するための手順です。
+この文書は、`ptaorg/jp` に置いた元データから、確認用HTML、学校別実態調査票、SVG図表、PDF、公開用成果物を生成するための手順です。
 
 公開ページそのものには、制作手順や内部生成ファイルへの導線を出しません。公開ページで読者に見せるダウンロード導線は、実務で使うPDFとExcelを中心にします。
 
@@ -40,26 +40,12 @@ python scripts/build_plain_xlsx.py
 
 公開用XLSXの「根拠資料」シートには、一次資料台帳の `引用箇所` 列を含めます。教育委員会が調査票を読む際、単なる資料名ではなく、その資料のどの論点を参照しているのか確認できるようにするためです。
 
-## 3. Mermaid図のSVG化
+## 3. SVG図表生成
 
-Mermaid図をSVGに変換する場合は、Node.js と Mermaid CLI が必要です。
-
-初回のみ次を実行します。
-
-```bash
-npm install
-```
-
-その後、次のコマンドでSVGを生成します。
+公開ページ本文中の図表は、Mermaidの自動レイアウトではなく、行政資料向けに固定レイアウトで生成します。
 
 ```bash
 python scripts/render_diagrams.py
-```
-
-又は、次でも実行できます。
-
-```bash
-npm run render:diagrams
 ```
 
 生成されるファイル:
@@ -69,7 +55,7 @@ npm run render:diagrams
 - `dist/diagrams-svg/scope.svg`
 - `dist/diagram-render-report.txt`
 
-GitHub Actions上では、`mermaid-puppeteer-config.json` によりChromiumのサンドボックス設定を調整します。Mermaid CLI が見つからない場合、スクリプトは失敗扱いにせず、`SKIP svg` として終了します。
+図表の元データとして `diagrams/*.mmd` は残しますが、公開用SVGは `scripts/render_diagrams.py` が直接生成します。これにより、箱が散らばるだけの図ではなく、行政資料として読みやすい比較図・連鎖図・範囲図にします。
 
 ## 4. PDF生成
 
@@ -145,6 +131,7 @@ GitHub Actions の `Build public materials` では、ローカル存在確認を
 5. PDFの余白、見出し、本文行間が行政資料として読める状態であること。
 6. PDFで見出しだけがページ末尾に孤立しないこと。
 7. 公開用XLSXの「根拠資料」シートに `引用箇所` 列が含まれていること。
+8. 公開ページ本文中のSVG図表が、Mermaid任せの粗い箱図ではなく、行政資料として読みやすい固定レイアウトになっていること。
 
 ## 8. 注意
 
