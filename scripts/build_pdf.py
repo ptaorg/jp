@@ -115,7 +115,23 @@ def render_with_weasyprint(src: Path, dst: Path) -> tuple[bool, str]:
 
 def render_with_wkhtmltopdf(command: str, src: Path, dst: Path) -> tuple[bool, str]:
     result = subprocess.run(
-        [command, "--encoding", "utf-8", str(src), str(dst)],
+        [
+            command,
+            "--encoding",
+            "utf-8",
+            "--page-size",
+            "A4",
+            "--margin-top",
+            "22mm",
+            "--margin-right",
+            "20mm",
+            "--margin-bottom",
+            "24mm",
+            "--margin-left",
+            "20mm",
+            str(src),
+            str(dst),
+        ],
         cwd=str(ROOT),
         text=True,
         capture_output=True,
