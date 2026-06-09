@@ -29,9 +29,9 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `robots.txt` / `sitemap.xml`  
   公開ページとPDFへの基本的な検索導線です。
 
-## 配布・共有用資料
+## 公開ページ上の配布資料
 
-公開ページから次の資料にアクセスできるようにしています。
+公開ページ上でダウンロード導線を置く資料は、読者が実務で使うものに絞ります。
 
 - `public/pdf/pta-school-separation-guideline.pdf`  
   教育委員会向けガイドラインPDF。
@@ -45,14 +45,9 @@ PTAは、学校の補助機関ではなく、任意加入の社会教育関係�
 - `public/xlsx/pta-school-separation-school-survey.xlsx`  
   学校別実態調査票Excel。
 
-- `public/img/chain.svg`  
-  入会申込記録の欠落から広がる違法・不適切運用の連鎖図。
+図表SVGは、公開ページ本文中に表示するための画像ファイルです。公開ページ上では個別のSVGダウンロード導線を置きません。
 
-- `public/img/before-after.svg`  
-  現在の混在運用と分離後の運用比較図。
-
-- `public/img/scope.svg`  
-  学校が関与できる範囲・関与すべきでない範囲の整理図。
+Markdown原稿、Mermaidソース、内部生成手順は制作管理用のファイルです。公開ページ上では、読者向けの導線としては出しません。
 
 ## 現在の確認状況
 
@@ -63,7 +58,7 @@ GitHub Actions による公開用資料の生成と、公開ページ内のロ�
 - `public/public-build-report.txt`
 - `public/link-check-report.txt`
 
-`public/link-check-report.txt` では、CSS、SVG、PDF、XLSX、Markdown、CSV、Mermaidソースへの相対リンクが確認済みです。
+`public/link-check-report.txt` では、CSS、SVG、PDF、XLSX、Markdown、CSV、Mermaidソースへの相対リンクが確認済みです。ただし、公開ページ上で読者に見せるダウンロード導線はPDF・Excel中心に整理しています。
 
 なお、公開URL `https://ptaorg.com/jp/` のブラウザ実表示確認は、DNS・GitHub Pages設定・キャッシュの影響を受けるため、公開環境上で別途確認します。
 
@@ -88,7 +83,7 @@ GitHub Actions による公開用資料の生成と、公開ページ内のロ�
   学校別実態調査票の元データです。
 
 - `diagrams/*.mmd`  
-  本文中に表示する図表のMermaidソースです。
+  本文中に表示する図表のMermaidソースです。公開ページ上ではソースファイルへの導線は置きません。
 
 ## 生成・確認の仕組み
 
@@ -119,3 +114,4 @@ GitHub Actions の `.github/workflows/build-public.yml` により、Markdown、C
 - 確認していないURL、資料、法令、判例を断定しない。
 - 大元サイトへのリンクは補助導線に留める。
 - 公開ページには、scripts、GitHub Actions、public配置などの内部制作手順を見せない。
+- 公開ページ上のダウンロード導線は、読者が実務で使うPDF・Excelを中心にする。
