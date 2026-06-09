@@ -1,3 +1,5 @@
-# 第2段階の最小ビルドでは外部Python依存を使いません。
-# python scripts/build.py は標準ライブラリだけで動作します。
-# PDF生成・Excel生成・SVG生成を追加する段階で、必要な依存関係をここに追記します。
+# 第7段階: Excel調査票生成に artifact_tool を使用します。
+# ChatGPT実行環境では利用可能ですが、一般のローカル環境では未提供の場合があります。
+# artifact_tool がない環境では、scripts/build.py は XLSX生成だけをスキップし、HTML確認とCSV検証は続行します。
+
+# PDF生成・SVG生成を追加する段階で、必要な依存関係をここに追記します。
