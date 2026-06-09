@@ -12,14 +12,8 @@ OK local: public/pdf/pta-school-separation-notice-template.pdf
 OK local: public/pdf/pta-school-separation-school-survey-form.pdf
 OK local: public/xlsx/pta-school-separation-school-survey.xlsx
 SKIP external: https://ptaorg.com/
-OK local: docs/guideline.md
-OK local: docs/notice-template.md
-OK local: docs/school-survey-form.md
 OK local: sources/primary-sources.csv
 OK local: data/separation-checklist.csv
-OK local: diagrams/chain.mmd
-OK local: diagrams/before-after.mmd
-OK local: diagrams/scope.mmd
 
 Required public files
 ---------------------

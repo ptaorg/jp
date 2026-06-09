@@ -8,7 +8,7 @@ This build does not generate PDF, SVG, or publish to ptaorg.com.
 OK docs: docs/guideline.md -> dist/pta-school-separation-guideline.html
 OK docs: docs/notice-template.md -> dist/pta-school-separation-notice-template.html
 OK docs: docs/school-survey-form.md -> dist/pta-school-separation-school-survey-form.html
-OK csv: sources/primary-sources.csv rows=24 message=ok
+OK csv: sources/primary-sources.csv rows=25 message=ok
 OK csv: data/separation-checklist.csv rows=25 message=ok
 OK diagram: diagrams/chain.mmd -> dist/diagrams/chain.mmd
 OK diagram: diagrams/before-after.mmd -> dist/diagrams/before-after.mmd
