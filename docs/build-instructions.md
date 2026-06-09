@@ -63,7 +63,7 @@ npm run render:diagrams
 - `dist/diagrams-svg/scope.svg`
 - `dist/diagram-render-report.txt`
 
-Mermaid CLI が見つからない場合、スクリプトは失敗扱いにせず、`SKIP svg` として終了します。
+GitHub Actions上では、`mermaid-puppeteer-config.json` によりChromiumのサンドボックス設定を調整します。Mermaid CLI が見つからない場合、スクリプトは失敗扱いにせず、`SKIP svg` として終了します。
 
 ## 4. PDF生成
 
