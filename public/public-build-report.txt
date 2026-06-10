@@ -8,8 +8,8 @@ This normal build prepares HTML, checks CSV files, and stages diagram sources.
 OK docs: docs/guideline.md -> dist/pta-school-separation-guideline.html
 OK docs: docs/notice-template.md -> dist/pta-school-separation-notice-template.html
 OK docs: docs/school-survey-form.md -> dist/pta-school-separation-school-survey-form.html
-OK csv: sources/primary-sources.csv rows=26 message=ok
-OK csv: data/separation-checklist.csv rows=31 message=ok
+OK csv: sources/primary-sources.csv rows=27 message=ok
+OK csv: data/separation-checklist.csv rows=37 message=ok
 OK diagram: diagrams/chain.mmd -> dist/diagrams/chain.mmd
 OK diagram: diagrams/before-after.mmd -> dist/diagrams/before-after.mmd
 OK diagram: diagrams/scope.mmd -> dist/diagrams/scope.mmd
@@ -19,13 +19,13 @@ OK xlsx: dist/pta-school-separation-school-survey.xlsx
 OK step: pdf build
 PTA school separation PDF build report
 ======================================
-PDF engine: wkhtmltopdf (/usr/bin/wkhtmltopdf)
+PDF engine: weasyprint
 OK pdf: dist/pta-school-separation-guideline.html -> dist/pdf/pta-school-separation-guideline.pdf
-INFO pdf: pta-school-separation-guideline.pdf size=246KB
+INFO pdf: pta-school-separation-guideline.pdf size=225KB
 OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-separation-notice-template.pdf
-INFO pdf: pta-school-separation-notice-template.pdf size=142KB
+INFO pdf: pta-school-separation-notice-template.pdf size=130KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
-INFO pdf: pta-school-separation-school-survey-form.pdf size=125KB
+INFO pdf: pta-school-separation-school-survey-form.pdf size=115KB
 OK step: svg render
 PTA school separation SVG render report
 ======================================

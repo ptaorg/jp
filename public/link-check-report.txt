@@ -5,14 +5,14 @@ Local link check
 SKIP external: https://ptaorg.com/jp/
 OK local: assets/site.css
 OK local: public/img/chain.svg
+OK local: public/img/article69-flow.svg
 OK local: public/img/before-after.svg
 OK local: public/img/scope.svg
+OK local: public/img/separation-actions.svg
 OK local: public/pdf/pta-school-separation-guideline.pdf
 OK local: public/pdf/pta-school-separation-notice-template.pdf
 OK local: public/pdf/pta-school-separation-school-survey-form.pdf
 OK local: public/xlsx/pta-school-separation-school-survey.xlsx
-OK local: sources/primary-sources.csv
-OK local: data/separation-checklist.csv
 SKIP external: https://ptaorg.com/
 
 Required public files
