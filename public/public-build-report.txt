@@ -19,13 +19,13 @@ OK xlsx: dist/pta-school-separation-school-survey.xlsx
 OK step: pdf build
 PTA school separation PDF build report
 ======================================
-PDF engine: weasyprint
+PDF engine: wkhtmltopdf (/usr/bin/wkhtmltopdf)
 OK pdf: dist/pta-school-separation-guideline.html -> dist/pdf/pta-school-separation-guideline.pdf
-INFO pdf: pta-school-separation-guideline.pdf size=225KB
+INFO pdf: pta-school-separation-guideline.pdf size=274KB
 OK pdf: dist/pta-school-separation-notice-template.html -> dist/pdf/pta-school-separation-notice-template.pdf
-INFO pdf: pta-school-separation-notice-template.pdf size=130KB
+INFO pdf: pta-school-separation-notice-template.pdf size=157KB
 OK pdf: dist/pta-school-separation-school-survey-form.html -> dist/pdf/pta-school-separation-school-survey-form.pdf
-INFO pdf: pta-school-separation-school-survey-form.pdf size=115KB
+INFO pdf: pta-school-separation-school-survey-form.pdf size=137KB
 OK step: svg render
 PTA school separation SVG render report
 ======================================
